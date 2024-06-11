@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+        <title>IEO 认购</title>
+        <!-- <link rel="stylesheet" type="text/css" href="css/common.css" /> -->
+        <link rel="stylesheet" type="text/css" href="fonts/iconfont.css" />
+        <link rel="stylesheet" type="text/css" href="css/footer.css" />
+        <link rel="stylesheet" type="text/css" href="css/mining.css" />
+        <link rel="stylesheet" type="text/css" href="css/ieoDetail.css" />
+        <link rel="stylesheet" href="../layui/css/layui.css" media="all" />
+        <link rel="stylesheet" type="text/css" href="lib/bootstrap.min.css" />
+    </head>
+    <style>
+        body {
+            background: #0b1622;
+            background-size: cover;
+            color: #f2f5ff;
+        }
+        .end {
+            background: rgb(153, 153, 153) !important;
+        }
+        .active-class {
+            background: #00c087 !important;
+            color: #fff !important;
+        }
+    </style>
+    <body>
+        <div id="app">
+            <body class="uni-body pages-ieo-detail">
+                <uni-app class="uni-app--maxwidth">
+                    <uni-page>
+                        <uni-page-wrapper>
+                            <uni-page-body>
+                                <uni-view>
+                                    <uni-navigator class="back mt5" @click="window.history.go(-1)">
+                                        <uni-image>
+                                            <div style="background-image: url('images/return.png'); background-position: 0% 0%; background-size: 100% 100%; background-repeat: no-repeat"></div>
+                                            <img src="images/return.png" draggable="true" />
+                                        </uni-image>
+                                    </uni-navigator>
+                                    <uni-view class="top-bg">
+                                        <uni-view class="top-title">
+                                            <uni-view class="top-title-h1">{{data.title}}</uni-view>
+                                            <uni-text><span>{{data.summary}}</span></uni-text>
+                                        </uni-view>
+                                    </uni-view>
+                                    <uni-view class="white-jje">
+                                        <uni-view class="white-time">
+                                            <uni-view class="white-time-h1">{{getlg('ieo_4')}}</uni-view>
+                                            <uni-text><span>{{data.end_at}}</span></uni-text>
+                                        </uni-view>
+                                        <uni-view class="white-time between">
+                                            <uni-view class="white-time-h1">{{getlg('ieo_11')}}</uni-view>
+                                            <div style="color: #212833">{{data.pay_currency_name}}</div>
+                                        </uni-view>
+                                        <uni-view class="white-time between">
+                                            <uni-view class="white-time-h2">{{getlg('ieo_12')}}</uni-view>
+                                            <uni-text><span>1 {{data.currency_name}} = {{data.price}} {{data.pay_currency_name}}</span></uni-text>
+                                        </uni-view>
+                                        <uni-view class="white-time between">
+                                            <uni-view class="white-time-h2">{{getlg('ieo_3')}}</uni-view>
+                                            <uni-text><span>{{iTofixed(data.amount,0)}}{{data.currency_name}}</span></uni-text>
+                                        </uni-view>
+                                        <uni-view class="white-link">
+                                            <uni-navigator class="">
+                                                <a :href="data.link" target="_blank">{{getlg('ieo_13')}}</a>
+                                            </uni-navigator>
+                                            <uni-navigator class="">
+                                                <a :href="data.white_book" target="_blank">{{getlg('ieo_14')}}</a>
+                                            </uni-navigator>
+                                        </uni-view>
+                                    </uni-view>
+                                    <uni-view class="sgzq">
+                                        <uni-view class="sgzq-title">{{getlg('ieo_15')}}</uni-view>
+                                        <uni-view class="sc-1hdolm6-1 hFymFN">
+                                            <uni-view class="item active">
+                                                <uni-text class="item-circle"><span>1</span></uni-text>
+                                                <uni-view class="item-title">
+                                                    {{getlg('ieo_16')}}
+                                                    <uni-view class="time"></uni-view>
+                                                </uni-view>
+                                            </uni-view>
+                                            <uni-view class="item active">
+                                                <uni-text class="item-circle"><span>2</span></uni-text>
+                                                <uni-view class="item-title">
+                                                    {{getlg('ieo_17')}}
+                                                    <uni-view class="time">{{data.start_at}}</uni-view>
+                                                </uni-view>
+                                            </uni-view>
+                                            <uni-view class="item active">
+                                                <uni-text class="item-circle"><span>3</span></uni-text>
+                                                <uni-view class="item-title">
+                                                    {{getlg('ieo_18')}}
+                                                    <uni-view class="time">{{data.end_at}}</uni-view>
+                                                </uni-view>
+                                            </uni-view>
+                                        </uni-view>
+                                    </uni-view>
+                                    <uni-view class="xmxq">
+                                        <uni-view class="xmxq-title">{{getlg('ieo_19')}}</uni-view>
+                                        <uni-view class="xmxq-content"><p v-html="data.content"></p></uni-view>
+                                    </uni-view>
+                                    <uni-view style="height: 60px; background: rgb(255, 255, 255)"></uni-view>
+                                    <uni-view class="submit">
+                                        <uni-button :class="data.status == 1?'active-class':''" class="end" @click="handerSubmitClick">{{getlg('ieo_status_'+data.status)}}</uni-button>
+                                    </uni-view>
+                                </uni-view>
+                            </uni-page-body>
+                        </uni-page-wrapper>
+                    </uni-page>
+                    <div class="tradeorder-box" v-show="tradeOrderBool">
+                        <div class="tradeorder-mask">
+                            <div class="tradeorder">
+                                <div class="tradeorder-title">
+                                    <span data-localize="zdy.orderconfirm">订单确认</span>
+                                    <img src="images/ia.png" @click="tradeOrderBool = false" />
+                                </div>
+                                <div class="tradeorder-buy tradeorder-bili">
+                                    <h1 data-localize="zdy.buynum">买入数量</h1>
+                                    <input type="number" v-model="inputValue" />
+                                </div>
+                                <div class="tradeorder-balance tradeorder-bili">
+                                    <!-- <span data-localize="zdy.keyongyue">可用余额</span>
+                                    ：{{(balance%1==0)?Math.floor(balance):balance}} -->
+                                </div>
+                                <div class="tradeorder-btn">
+                                    <span data-localize="fat.sure" @click="submit">确认下单</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </uni-app>
+            </body>
+        </div>
+    </body>
+</html>
+<script type="text/javascript" src="lib/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="lib/swiper.min.js"></script>
+<script type="text/javascript" src="javascripts/jquery.cookie.js"></script>
+<script type="text/javascript" src="lib/layer_mobile/layer.js"></script>
+<script type="text/javascript" src="lib/vue.min.js"></script>
+<script type="text/javascript" src="lib/jquery.localize.min.js"></script>
+<script type="text/javascript" src="lib/language_cookie.js"></script>
+<script type="text/javascript" src="javascripts/main.js"></script>
+<script>
+    var vm = new Vue({
+        el: '#app',
+        data() {
+            return {
+                data: {},
+                tradeOrderBool: false,
+                inputValue: '',
+            };
+        },
+        mounted() {
+            this.getData();
+        },
+        updated() {},
+        methods: {
+            getData() {
+                var _ = this;
+                layer_loading();
+                initDataTokens(
+                    {
+                        url: 'project/detail',
+                        type: 'post',
+                        data: {
+                            id: window.location.search.replace('?id=', ''),
+                        },
+                    },
+                    function (res) {
+                        if (res.type != 'ok') return;
+                        _.data = res.message;
+                    }
+                );
+            },
+            handerJumpClick(url) {
+                window.open(url);
+            },
+            handerSubmitClick() {
+                if (this.data.status != 1) return;
+                this.inputValue = '';
+                this.tradeOrderBool = true;
+            },
+            submit() {
+                var _ = this;
+                if (!_.inputValue) {
+                    layer_msg(getlg('ptnum'));
+                    return false;
+                }
+                _.tradeOrderBool = false;
+                layer_loading();
+                initDataTokens(
+                    {
+                        url: 'project/buy',
+                        type: 'post',
+                        data: {
+                            id: window.location.search.replace('?id=', ''),
+                            coin_amount: _.inputValue,
+                        },
+                    },
+                    function (res) {
+                        if (res.type != 'ok') return;
+                        layer_msg(res.message);
+                        setTimeout(() => {
+                            window.location.href = 'ieo.html';
+                        }, 1000);
+                    }
+                );
+            },
+        },
+    });
+</script>

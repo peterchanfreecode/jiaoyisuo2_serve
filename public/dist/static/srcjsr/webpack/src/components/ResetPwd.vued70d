@@ -1,0 +1,11 @@
+var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"forget-box"},[_c('div',{staticClass:"forget-password"},[_c('div',{staticClass:"forget-password-content"},[_c('div',{staticClass:"content"},[_c('img',{attrs:{"src":require("../../static/imgs/logo.png"),"alt":""}}),_vm._v(" "),_c('div',{staticClass:"content-list"},[_c('h4',[_vm._v(_vm._s(_vm.$t('set.setPsw')))]),_vm._v(" "),_c('div',{staticClass:"content-input"},[_c('div',{staticClass:"content-phone"},[_c('div',{staticClass:"flex content-phone-input"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.password),expression:"password"}],attrs:{"type":"password","placeholder":_vm.$t('set.enterPsw')},domProps:{"value":(_vm.password)},on:{"input":function($event){if($event.target.composing){ return; }_vm.password=$event.target.value}}})]),_vm._v(" "),_c('div',{staticClass:"code flex between mt20"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.re_password),expression:"re_password"}],attrs:{"type":"password","placeholder":_vm.$t('set.enterPswagain')},domProps:{"value":(_vm.re_password)},on:{"input":function($event){if($event.target.composing){ return; }_vm.re_password=$event.target.value}}})])]),_vm._v(" "),_c('div',{staticClass:"btns",on:{"click":_vm.resetPass}},[_c('button',[_vm._v(_vm._s(_vm.$t('cuy.confirm')))])])])])])])])])}
+var staticRenderFns = []
+var esExports = { render: render, staticRenderFns: staticRenderFns }
+export default esExports
+
+
+//////////////////
+// WEBPACK FOOTER
+// ./node_modules/vue-loader/lib/template-compiler?{"id":"data-v-2045046f","hasScoped":true,"transformToRequire":{"video":["src","poster"],"source":"src","img":"src","image":"xlink:href"},"buble":{"transforms":{}}}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./src/components/ResetPwd.vue
+// module id = null
+// module chunks = 

@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+        <title>AdvancedAuthentication</title>
+        <link rel="stylesheet" type="text/css" href="css/common.css" />
+        <link rel="stylesheet" type="text/css" href="css/style.css" />
+        <link rel="stylesheet" type="text/css" href="element-ui/lib/theme-chalk/index.css" />
+        <link rel="stylesheet" href="javascripts/common.js" />
+        <style>
+            .bgLinearblue {
+                height: 50px;
+                border-radius: 2px;
+                color: #fff;
+                background: #588bf7;
+                text-align: center;
+                line-height: 50px;
+                font-size: 18px;
+                padding: 0;
+                margin: 40px 12px 10px;
+            }
+            .selectbiz .el-dropdown {
+                width: 100%;
+            }
+            .selectbiz .el-dropdown-link {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+            }
+            .selectbiz {
+                padding: 0 0 10px 0;
+                border-radius: 5px;
+                margin-top: 10px;
+                line-height: 20px;
+                border-bottom: 1px solid #f1f1f1;
+            }
+        </style>
+    </head>
+    <style></style>
+
+    <body class="bgWhite">
+        <div id="app">
+            <header class="header">
+                <a class="back mt5" href="javascript:history.go(-1)"></a>
+                <h4 class="ft16" data-localize="fat.advancedAuthentication">Advanced authentication</h4>
+            </header>
+            <div class="text ml12" style="margin-top: 20px">
+                <p class="white_gray ft12" data-localize="auth.upload">Please upload a hand-held ID photo</p>
+            </div>
+            <div class="flex mt15" style="justify-content: space-around">
+                <!-- <div class="qwe">
+                    <div id="prev" class="haokan">
+                        <img src="images/myimg/688660269851391423.png" alt="" id="view" />
+                        <input type="file" id="file" accept="image/*" name="file" v-model="front_pic" />
+                    </div>
+                </div>
+                <div class="qwe">
+                    <div id="prev1" class="haokan">
+                        <img src="images/myimg/688660269851391423.png" alt="" id="view1" />
+                        <input type="file" id="file1" accept="image/*" v-model="reverse_pic" />
+                    </div>
+                </div> -->
+                <div class="qwe">
+                    <div id="prev2" class="haokan">
+                        <img src="images/myimg/688660269851391423.png" alt="" id="view2" />
+                        <input type="file" id="file2" accept="image/*" v-model="hand_pic" />
+                    </div>
+                </div>
+            </div>
+            <button class="bgLinearblue ftw ft16" data-localize="auth.updata" @click="submit">Submit</button>
+        </div>
+        <script type="text/javascript" src="lib/jquery-2.1.1.min.js"></script>
+        <script type="text/javascript" src="lib/layer_mobile/layer.js"></script>
+        <script type="text/javascript" src="javascripts/jquery.cookie.js"></script>
+        <script type="text/javascript" src="lib/vue.min.js"></script>
+        <script type="text/javascript" src="element-ui/lib/index.js"></script>
+        <script type="text/javascript" src="lib/jquery.localize.min.js"></script>
+        <script type="text/javascript" src="lib/language_cookie.js"></script>
+        <script type="text/javascript" src="javascripts/main.js"></script>
+        <script>
+            new Vue({
+                el: '#app',
+                data() {
+                    return {
+                        list: [
+                            { id: 0, texts: '身份证' },
+                            { id: 1, texts: '护照' },
+                            { id: 2, texts: '驾驶证' },
+                        ],
+                        type: 0,
+                        name: '',
+                        card_id: '',
+                        front_pic: null,
+                        reverse_pic: null,
+                        hand_pic: null,
+                    };
+                },
+                mounted() {},
+                computed: {},
+                methods: {
+                    selectedCurrency(e) {
+                        this.type = e.id;
+                    },
+                    submit() {},
+                },
+            });
+            $(function () {
+                $('#file').change(function () {
+                    var formData = new FormData();
+                    formData.append('file', $('#file')[0].files[0]);
+                    var i = layer_loading();
+                    $.ajax({
+                        url: _API + 'upload',
+                        type: 'post',
+                        data: formData,
+                        processData: false,
+                        contentType: false,
+                        success: function (msg) {
+                            if (msg.type == 'ok') {
+                                $('#view').attr('src', msg.message);
+                                setTimeout(function () {
+                                    layer_close(i);
+                                }, 3000);
+                            } else {
+                                $('#view').attr('src', 'images/myimg/688660269851391423.png');
+                                layer_msg(msg.message);
+                            }
+                        },
+                    });
+                });
+                $('#file2').change(function () {
+                    var formData = new FormData();
+                    formData.append('file', $('#file2')[0].files[0]);
+                    var i = layer_loading();
+                    $.ajax({
+                        url: _API + 'upload',
+                        type: 'post',
+                        data: formData,
+                        processData: false,
+                        contentType: false,
+                        success: function (msg) {
+                            if (msg.type == 'ok') {
+                                $('#view2').attr('src', msg.message);
+                                setTimeout(function () {
+                                    layer_close(i);
+                                }, 3000);
+                            } else {
+                                layer_msg(msg.message);
+                            }
+                        },
+                    });
+                });
+                $('#file1').change(function () {
+                    var formData = new FormData();
+                    formData.append('file', $('#file1')[0].files[0]);
+                    var i = layer_loading();
+                    $.ajax({
+                        url: _API + 'upload',
+                        type: 'post',
+                        data: formData,
+                        processData: false,
+                        contentType: false,
+                        success: function (msg) {
+                            if (msg.type == 'ok') {
+                                $('#view1').attr('src', msg.message);
+                                setTimeout(function () {
+                                    layer_close(i);
+                                }, 3000);
+                            } else {
+                                layer_msg(msg.message);
+                            }
+                        },
+                    });
+                });
+                $('button').click(function () {
+                    var token = get_user_login();
+                    // var name = $('.name').val();
+                    // var sfzh = $('.sfzh').val();
+                    var img1 = $('#view').attr('src');
+                    var img2 = $('#view1').attr('src');
+                    var img3 = $('#view2').attr('src');
+                    var aa = this;
+                    var token = get_user_login();
+                    // if (!name) {
+                    //     layer_msg(getlg('prname'));
+                    //     return false;
+                    // }
+                    // if (!sfzh) {
+                    //     layer_msg(getlg('pid'));
+                    //     return false;
+                    // }
+                    // if (img1 == 'images/myimg/688660269851391423.png' || img2 == 'images/myimg/688660269851391423.png' || img3 == 'images/myimg/688660269851391423.png') {
+                    //     layer_msg(getlg('uploadImages'));
+                    //     return false;
+                    // }
+                    layer_loading();
+                    $.ajax({
+                        url: _API + 'user/authHigh',
+                        type: 'POST',
+                        data: {
+                            // name: name,
+                            // card_id: sfzh,
+                            // front_pic: img1,
+                            // reverse_pic: img2,
+                            hand_pic: img3,
+                        },
+                        dataType: 'JSON',
+                        async: true,
+                        beforeSend: function beforeSend(request) {
+                            request.setRequestHeader('Authorization', token);
+                        },
+                        success: function (data) {
+                            layer_msg(data.message);
+
+                            if (data.type == 'ok') {
+                                setTimeout(function () {
+                                    // location.href = 'index.html';
+                                    location.href=document.referrer;
+                                }, 1500);
+                            }
+                        },
+                    });
+                });
+            });
+        </script>
+    </body>
+</html>

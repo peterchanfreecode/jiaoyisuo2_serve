@@ -1,0 +1,477 @@
+.head {
+  background: url(../../images/movebricks_bg.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+.headItem {
+  text-align: center;
+  padding: 10px 0 20px;
+  line-height: 5rem;
+}
+.headItem .val {
+  line-height: 2rem;
+  font-weight: 700;
+  font-size: 1rem;
+}
+.bgImg {
+  width: 100%;
+  height: 231px;
+}
+.bgImg uni-image {
+  width: 100%;
+  height: 100%;
+}
+.boxtitle {
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  width: 100%;
+  padding-top: 44px;
+}
+.boxtitle uni-view {
+  margin-left: 22px;
+  margin-bottom: 22px;
+  /* padding-top: 80upx; */
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.boxtitle uni-text:after {
+  content: "";
+  position: absolute;
+  bottom: -8px;
+  left: 19px;
+  border-width: 0 11px 11px;
+  border-style: solid;
+  border-color: transparent transparent transparent #ffd12d;
+}
+.boxtitle uni-text {
+  position: relative;
+  background: #ffd12d;
+  color: #000;
+  font-weight: 700;
+  padding: 5px 16px;
+  border-radius: 16px;
+  font-size: 15px;
+}
+.boxtitle .h2 {
+  font-weight: 700;
+  text-align: center;
+  font-size: 22px;
+  color: #fff;
+  margin-top: 16px;
+  margin-left: 22px;
+}
+/* .mineCard {
+    position: relative;
+    width: 90%;
+    margin: 22px auto 0;
+    border-radius: 16px;
+   
+    padding-top: 22px;
+    padding-bottom: 22px;
+} */
+
+.topNameCard {
+  position: absolute;
+  right: 0;
+  top: 0;
+  border-radius: 0 5px 0 11px;
+  padding: 11px 33px;
+  text-align: center;
+  color: #fff;
+  background: #00b796;
+}
+.topName {
+  font-size: 30px;
+  display: flex;
+  /* flex-direction: column; */
+  padding-left: 16px;
+}
+
+.topName img {
+  height: 30px;
+  width: 80px;
+  float: left;
+  border-radius: 6px;
+}
+
+.topName .span-text {
+  font-size: 30px;
+  padding-left: 16px;
+  width: 80px;
+  display: block;
+  color: #000;
+  font-weight: 600;
+  /* float: left; */
+}
+
+.topName uni-text::after {
+  content: ",";
+}
+.topName uni-text:last-child::after {
+  content: "";
+}
+.topNamePay {
+  color: #000;
+  margin-top: 11px;
+  font-weight: 700;
+  float: right;
+}
+.topNameCard {
+  position: absolute;
+  right: 0;
+  top: 0;
+  border-radius: 0 5px 0 11px;
+  padding: 11px 33px;
+  text-align: center;
+  color: #fff;
+  background: #00b796;
+}
+.bottomCard {
+  padding: 0 22px;
+}
+.midType {
+  margin-top: 22px;
+}
+.midTypetTitle i:after {
+  content: "}";
+}
+.midTypetTitle i:before {
+  content: "{";
+}
+.midTypetTitle {
+  font-size: 16px;
+  margin-bottom: 22px;
+}
+.price span {
+  font-size: 17px;
+}
+.price {
+  letter-spacing: 3px;
+  font-size: 27px;
+  font-weight: 700;
+  color: #00b796;
+}
+.midDay {
+  display: flex;
+  flex-direction: column;
+  color: #999;
+}
+.midDay div uni-label {
+  font-size: 28px;
+}
+.midDay div {
+  margin-bottom: 5px;
+  font-size: 27px;
+  font-weight: 700;
+  color: #000;
+}
+.minerBtn {
+  margin: 0 22px;
+}
+.gray9 {
+  color: #999;
+}
+.btn {
+  width: 100%;
+  padding: 13px 44px;
+  text-align: center;
+  font-size: 15px;
+  color: #fff;
+  background-color: #2c63e4;
+  border-radius: 16px;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+.buyMask {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  z-index: 3;
+  background: rgba(0, 0, 0, 0.5);
+}
+.buyTitle {
+  color: #000;
+  text-align: center;
+  font-size: 22px;
+  padding: 11px;
+  border-bottom: 1px solid #ddd;
+}
+.buyBox {
+  display: flex;
+  flex-direction: column;
+}
+.buyItem {
+  padding: 22px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.buyItem uni-text {
+  color: #999;
+  font-size: 15px;
+}
+.buyItem .h1 {
+  font-weight: 700;
+  font-size: 15px;
+  color: #000;
+}
+.buyBtn {
+  margin-top: 11px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin-top: 33px;
+}
+.buyBtn uni-button {
+  cursor: pointer;
+  width: 45%;
+  height: 55px;
+  text-align: center;
+  line-height: 55px;
+  border-radius: 5px;
+  font-size: 17px;
+}
+.buyBtn .cencelBuy {
+  border: 0;
+  background-color: #eee;
+  color: #999;
+}
+.buyBtn .sureBuy {
+  border: 0;
+  background-color: #0066ed;
+  color: #fff;
+}
+.acstorm {
+  margin: 22px 0 11px;
+  color: #999;
+  text-align: center;
+}
+.acboxTime {
+  justify-content: center;
+}
+.acboxTimeView {
+  font-size: 17px;
+  font-weight: 700;
+}
+.acBoxBtn {
+  display: flex;
+  justify-content: center;
+  margin-top: 16px;
+  padding-bottom: 22px;
+}
+.acBoxBtn uni-button {
+  cursor: pointer;
+  padding: 7px 22px;
+  border-radius: 5px;
+  background: #0066ed;
+  color: #fff;
+}
+.mt5 {
+  margin-top: 5px;
+}
+.acbuyInput {
+  margin-top: 5px;
+}
+.acbuyBtmL select {
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+.mt50 {
+  margin-top: 55px;
+}
+.buyMask {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  z-index: 3;
+  /* background: rgba(0, 0, 0, 0.5); */
+}
+.buyContent {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  margin: auto;
+  width: 90%;
+  height: 397px;
+  background: #fff;
+  border-radius: 5px;
+}
+.buyTitle {
+  color: #000;
+  text-align: center;
+  font-size: 22px;
+  padding: 11px;
+  border-bottom: 1px solid #ddd;
+}
+.buyBox {
+  display: flex;
+  flex-direction: column;
+}
+.buyItem {
+  padding: 22px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.buyItem span {
+  color: #999;
+  font-size: 15px;
+}
+.buyItem h1 {
+  font-weight: 700;
+  font-size: 15px;
+  color: #000;
+}
+.buyBtn {
+  margin-top: 11px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin-top: 33px;
+}
+.buyBtn uni-button {
+  cursor: pointer;
+  width: 45%;
+  height: 55px;
+  text-align: center;
+  line-height: 55px;
+  border-radius: 5px;
+  font-size: 17px;
+}
+.buyBtn .cencelBuy {
+  background-color: #eee;
+  color: #999;
+}
+.hdimg {
+  width: 27px;
+  height: 27px;
+  position: absolute;
+  right: 5px;
+  top: 5px;
+}
+.acbuyBtmL {
+  color: #000;
+}
+.mineCardList {
+  background-color: #f7f6fb;
+  padding-bottom: 10px;
+}
+.mineCardItem {
+  height: 110px;
+  background-color: #fff;
+  width: 94%;
+  border-radius: 10px;
+  margin-top: 10px;
+  margin-left: 3%;
+  padding: 10px;
+  box-sizing: border-box;
+}
+.mineCardItem .top img {
+  border: none;
+  width: 120px;
+  height: 15px;
+  margin-top: -8px;
+
+  /* border-radius: 6px; */
+}
+.mineCardItem .top span {
+  font-size: 18px;
+  font-weight: 600;
+  color: #000;
+  margin-left: 10px;
+  display: inline-block;
+  margin-top: 8px;
+}
+.mineCardItem .top button {
+  width: 60px;
+  height: 30px;
+  line-height: 30px;
+  box-sizing: border-box;
+  font-size: 12px;
+  text-align: center;
+  text-decoration: none;
+  line-height: 2.55555556;
+  border: none;
+  float: right;
+  border-radius: 6px;
+  -webkit-tap-highlight-color: transparent;
+  overflow: hidden;
+  color: #fff;
+  background: #00abff !important;
+  cursor: pointer;
+}
+.mineCardItem .bottom {
+  margin-top: 25px;
+}
+.mineCardItem .bottom .bottom-item {
+  float: left;
+  width: 33%;
+  text-align: center;
+  color: #000;
+}
+.mineCardItem .bottom .bottom-item p:nth-child(2) {
+  /* float: left;
+    text-align: center; */
+  margin-top: 4px;
+  font-size: 10px;
+  color: #00abff !important;
+}
+
+.topimg {
+  width: 27px;
+  height: 27px;
+  position: absolute;
+  z-index: 5;
+  right: 2%;
+  top: 11px;
+}
+.back {
+  z-index: 5;
+  position: absolute;
+  left: 6px;
+  display: block;
+  margin: 0 auto;
+  top: 8px;
+  width: 33px;
+  height: 26px;
+}
+.back uni-image {
+  width: 100%;
+  height: 100%;
+}
+.more {
+  margin-top: 10px;
+  text-align: center;
+}
+.list {
+  background: #fff;
+  color: #000;
+  margin-bottom: 22px;
+  padding: 22px;
+}
+.listitem {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 11px;
+}
+.listitem uni-text {
+  color: #999;
+}
+.confirmCancel {
+  color: #000;
+}
+.loadingdata {
+  margin: 22px 0;
+  text-align: center;
+}

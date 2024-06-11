@@ -1,0 +1,11 @@
+var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{class:_vm.skins=='days'?'account-main':'account-main balck'},[_c('ul',{staticClass:"list"},[_c('li',{staticClass:"flex between"},[_c('div',{staticClass:"flex"},[_c('h3',[_vm._v(_vm._s(_vm.$t('miscro.safetyCenter')))])])]),_vm._v(" "),_c('li',{staticClass:"flex between"},[_c('div',{staticClass:"flex"},[_c('h3',[_vm._v(_vm._s(_vm.$t('set.verification')))]),_vm._v(" "),_c('p',[_vm._v(_vm._s(_vm.$t('miscro.safeText1')))])]),_vm._v(" "),_c('p',[_c('span',[_vm._v(_vm._s(_vm.phone))])])]),_vm._v(" "),_c('li',{staticClass:"flex between"},[_c('div',{staticClass:"flex"},[_c('h3',[_vm._v(_vm._s(_vm.$t('set.loginpwd')))]),_vm._v(" "),_c('p',{staticClass:"fl"},[_vm._v(_vm._s(_vm.$t('miscro.safeText2')))])]),_vm._v(" "),_c('span',{staticClass:"base mouseDefault",on:{"click":function($event){_vm.goPwd()}}},[_vm._v(_vm._s(_vm.$t('set.reset')))])])])])}
+var staticRenderFns = []
+var esExports = { render: render, staticRenderFns: staticRenderFns }
+export default esExports
+
+
+//////////////////
+// WEBPACK FOOTER
+// ./node_modules/vue-loader/lib/template-compiler?{"id":"data-v-7b89d129","hasScoped":true,"transformToRequire":{"video":["src","poster"],"source":"src","img":"src","image":"xlink:href"},"buble":{"transforms":{}}}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./src/view/accountSet.vue
+// module id = null
+// module chunks = 

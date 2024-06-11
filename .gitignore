@@ -1,0 +1,9 @@
+.env
+/storage/logs/
+/storage/framework/
+/public/vendor/webmsgsender/vendor/workerman/workerman.log
+/vendor/workerman/workerman.log
+/public/upload/
+pong.
+/config/elasticsearch.php
+/app/Service/MailService.php

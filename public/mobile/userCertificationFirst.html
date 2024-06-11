@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+        <title data-localize="fat.primaryCertification">初级认证</title>
+        <link rel="stylesheet" type="text/css" href="css/common.css" />
+        <link rel="stylesheet" type="text/css" href="css/style.css" />
+        <link rel="stylesheet" type="text/css" href="element-ui/lib/theme-chalk/index.css" />
+        <link rel="stylesheet" href="javascripts/common.js" />
+        <style>
+            .bgLinearblue {
+                height: 50px;
+                border-radius: 2px;
+                color: #fff;
+                background: #588bf7;
+                text-align: center;
+                line-height: 50px;
+                font-size: 18px;
+                padding: 0;
+                margin: 40px 12px 10px;
+            }
+            .selectbiz .el-dropdown {
+                width: 100%;
+            }
+            .selectbiz .el-dropdown-link {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+            }
+            .selectbiz {
+                padding: 0 0 10px 0;
+                border-radius: 5px;
+                margin-top: 10px;
+                line-height: 20px;
+                border-bottom: 1px solid #f1f1f1;
+            }
+        </style>
+    </head>
+    <style></style>
+
+    <body class="bgWhite">
+        <div id="app">
+            <header class="header">
+                <a class="back mt5" href="javascript:history.go(-1)"></a>
+                <h4 class="ft16" data-localize="fat.primaryCertification">Primary certification</h4>
+            </header>
+            <div class="from mb20 ml12 auth">
+                <div class="mb20 mt20">
+                    <p data-localize="auth.4">Certificate type</p>
+                    <div class="selectbiz">
+                        <el-dropdown trigger="click" @command="selectedCurrency">
+                            <span class="el-dropdown-link">
+                                <span data-localize="auth.0" v-show="type == 0">ID card</span>
+                                <span data-localize="auth.1" v-show="type == 1">Passport</span>
+                                <span data-localize="auth.2" v-show="type == 2">Driver license</span>
+                                <i class="el-icon-arrow-down el-icon--right"></i>
+                            </span>
+                            <el-dropdown-menu slot="dropdown">
+                                <el-dropdown-item data-localize="auth.0" :key="0" :command="{id:0}">ID card</el-dropdown-item>
+                                <el-dropdown-item data-localize="auth.1" :key="1" :command="{id:1}">Passport</el-dropdown-item>
+                                <el-dropdown-item data-localize="auth.2" :key="2" :command="{id:2}">Driver license</el-dropdown-item>
+                            </el-dropdown-menu>
+                        </el-dropdown>
+                    </div>
+                </div>
+                <div class="mb20 mt20">
+                    <p data-localize="auth.name">Name</p>
+                    <input type="text" class="name bdb pb5 ft14" v-model="name" data-localize="auth.pname" placeholder="Your name" />
+                </div>
+                <div class="mb20">
+                    <p data-localize="auth.number">ID number</p>
+                    <input type="text" class="sfzh bdb pb5 ft14" v-model="card_id" data-localize="auth.pnum" placeholder="Please enter your ID number" />
+                </div>
+            </div>
+            <div class="text ml12">
+                <p class="white_gray ft12" data-localize="auth.upimg">Please upload the positive and negative sides of your ID card. The first is the positive side and the second is the negative side.</p>
+            </div>
+            <div class="flex jucenter mt15">
+                <div class="qwe">
+                    <div id="prev" class="haokan">
+                        <img src="images/myimg/688660269851391423.png" alt="" id="view" />
+                        <input type="file" id="file" accept="image/*" @change="getFile(1)" name="file" />
+                    </div>
+                </div>
+                <div class="qwe" style="margin: 0 20px">
+                    <div id="prev1" class="haokan">
+                        <img src="images/myimg/688660269851391423.png" alt="" id="view1" />
+                        <input type="file" id="file1" accept="image/*"  @change="getFile(2)"/>
+                    </div>
+                </div>
+            </div>
+            <button class="bgLinearblue ftw ft16" data-localize="auth.updata" @click="submit">Submit</button>
+        </div>
+        <script type="text/javascript" src="lib/jquery-2.1.1.min.js"></script>
+        <script type="text/javascript" src="lib/layer_mobile/layer.js"></script>
+        <script type="text/javascript" src="javascripts/jquery.cookie.js"></script>
+        <script type="text/javascript" src="lib/vue.min.js"></script>
+        <script type="text/javascript" src="element-ui/lib/index.js"></script>
+        <script type="text/javascript" src="lib/jquery.localize.min.js"></script>
+        <script type="text/javascript" src="lib/language_cookie.js"></script>
+        <script type="text/javascript" src="javascripts/main.js"></script>
+        <script>
+            new Vue({
+                el: '#app',
+                data() {
+                    return {
+                        list: [
+                            { id: 0, texts: '身份证' },
+                            { id: 1, texts: '护照' },
+                            { id: 2, texts: '驾驶证' },
+                        ],
+                        type: 0,
+                        name: '',
+                        card_id: '',
+                        file1:'',
+                        file2:'',
+                    };
+                },
+                mounted() {},
+                computed: {},
+                methods: {
+                    selectedCurrency(e) {
+                        this.type = e.id;
+                    },
+                    getFile(types){
+                        let _this = this
+                        var formData = new FormData();
+                        formData.append('file', $('#file')[0].files[0]);
+                        var i = layer_loading();
+                        $.ajax({
+                            url: _API + 'upload',
+                            type: 'post',
+                            data: formData,
+                            processData: false,
+                            contentType: false,
+                            success: function (msg) {
+                                //console.log(msg);
+                                if (msg.type == 'ok') {
+                                    // 暂存传输
+                                    switch (types) {
+                                        case 1:
+                                            _this.file1 = msg.message
+                                            break;
+                                        case 2:
+                                            _this.file2 = msg.message
+                                            break;
+                                        default:
+                                            break;
+                                    }
+                                    $('#view').attr('src', msg.message);
+                                    setTimeout(function () {
+                                        layer_close(i);
+                                    }, 3000);
+                                } else {
+                                    $('#view').attr('src', 'images/myimg/688660269851391423.png');
+                                    layer_msg(msg.message);
+                                }
+                            },
+                        });
+                    },
+                    submit() {
+                      
+                        var _ = this;
+                        if(!_.name)return layer_msg(getlg('pleaseName'));
+                        if(!_.card_id)return layer_msg(getlg('pleaseCard'));
+                        if(!_.file1 || !_.file2) return layer_msg(getlg('pleaseCardImage'));
+                        //console.log(this.file1, this.file2);
+                        layer_loading();
+                        initDataTokens(
+                            {
+                                url: 'user/authLow',
+                                type: 'post',
+                                data: {
+                                    type: _.type,
+                                    name: _.name,
+                                    card_id: _.card_id,
+                                    front_pic: _.file1,
+                                    reverse_pic: _.file2,
+                                },
+                            },
+                            function (res) {
+                                if (res.type != 'ok') return;
+                                location.href=document.referrer;
+                            }
+                        );
+
+                    },
+                },
+            });
+            $(function () {
+                $('#file').change(function () {
+                    var formData = new FormData();
+                    formData.append('file', $('#file')[0].files[0]);
+                    var i = layer_loading();
+                    $.ajax({
+                        url: _API + 'upload',
+                        type: 'post',
+                        data: formData,
+                        processData: false,
+                        contentType: false,
+                        success: function (msg) {
+                            if (msg.type == 'ok') {
+                                $('#view').attr('src', msg.message);
+                                setTimeout(function () {
+                                    layer_close(i);
+                                }, 3000);
+                            } else {
+                                $('#view').attr('src', 'images/myimg/688660269851391423.png');
+                                layer_msg(msg.message);
+                            }
+                        },
+                    });
+                });
+                $('#file2').change(function () {
+                    var formData = new FormData();
+                    formData.append('file', $('#file2')[0].files[0]);
+                    var i = layer_loading();
+                    $.ajax({
+                        url: _API + 'upload',
+                        type: 'post',
+                        data: formData,
+                        processData: false,
+                        contentType: false,
+                        success: function (msg) {
+                            if (msg.type == 'ok') {
+                                $('#view2').attr('src', msg.message);
+                                setTimeout(function () {
+                                    layer_close(i);
+                                }, 3000);
+                            } else {
+                                layer_msg(msg.message);
+                            }
+                        },
+                    });
+                });
+                $('#file1').change(function () {
+                    var formData = new FormData();
+                    formData.append('file', $('#file1')[0].files[0]);
+                    var i = layer_loading();
+                    $.ajax({
+                        url: _API + 'upload',
+                        type: 'post',
+                        data: formData,
+                        processData: false,
+                        contentType: false,
+                        success: function (msg) {
+                            if (msg.type == 'ok') {
+                                $('#view1').attr('src', msg.message);
+                                setTimeout(function () {
+                                    layer_close(i);
+                                }, 3000);
+                            } else {
+                                layer_msg(msg.message);
+                            }
+                        },
+                    });
+                });
+                //     $('button').click(function () {
+                //         var token = get_user_login();
+                //         var name = $('.name').val();
+                //         var sfzh = $('.sfzh').val();
+                //         var img1 = $('#view').attr('src');
+                //         var img2 = $('#view1').attr('src');
+                //         var img3 = $('#view2').attr('src');
+                //         var aa = this;
+                //         var token = get_user_login();
+                //         if (!name) {
+                //             layer_msg(getlg('prname'));
+                //             return false;
+                //         }
+                //         if (!sfzh) {
+                //             layer_msg(getlg('pid'));
+                //             return false;
+                //         }
+                //         if (img1 == 'images/myimg/688660269851391423.png' || img2 == 'images/myimg/688660269851391423.png') {
+                //             layer_msg(getlg('pimg'));
+                //             return false;
+                //         }
+                //         $.ajax({
+                //             url: _API + 'user/real_name',
+                //             type: 'POST',
+                //             data: {
+                //                 name: name,
+                //                 card_id: sfzh,
+                //                 front_pic: img1,
+                //                 reverse_pic: img2,
+                //                 // hand_pic: img3
+                //             },
+                //             dataType: 'JSON',
+                //             async: true,
+                //             beforeSend: function beforeSend(request) {
+                //                 request.setRequestHeader('Authorization', token);
+                //             },
+                //             success: function (data) {
+                //                 layer_msg(data.message);
+
+                //                 if (data.type == 'ok') {
+                //                     setTimeout(function () {
+                //                         location.href = 'index.html';
+                //                     }, 1500);
+                //                 }
+                //             },
+                //         });
+                //     });
+            });
+        </script>
+    </body>
+</html>

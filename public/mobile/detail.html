@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"
+    />
+    <title>Product details</title>
+    <link rel="stylesheet" type="text/css" href="css/common.css" />
+    <link rel="stylesheet" type="text/css" href="fonts/iconfont.css" />
+    <link rel="stylesheet" type="text/css" href="font/iconfont.css" />
+    <link rel="stylesheet" type="text/css" href="css/footer.css" />
+    <link rel="stylesheet" type="text/css" href="css/mining.css" />
+    <link rel="stylesheet" type="text/css" href="css/detail.css" />
+    <link rel="stylesheet" href="../layui/css/layui.css" media="all" />
+  </head>
+  <style>
+    body {
+      background: #f7f6fb;
+      background-size: cover;
+      color: #f2f5ff;
+    }
+  </style>
+
+  <body>
+    <div id="app">
+      <uni-app class="uni-app--maxwidth">
+        <uni-page>
+          <uni-page-head uni-page-head-type="default">
+            <div
+              class="uni-page-head"
+              style="
+                background-color: rgb(255, 255, 255);
+                width: 100%;
+                color: black;
+                transition-duration: 0ms;
+                transition-timing-function: linear;
+              "
+            >
+              <div class="uni-page-head-hd">
+                <div class="uni-page-head-btn">
+                  <i
+                    class="uni-btn-icon"
+                    style="color: black; font-size: 27px"
+                    @click="window.location = 'hosted.html'"
+                    ></i
+                  >
+                </div>
+                <div class="uni-page-head-ft"></div>
+              </div>
+              <div class="uni-page-head-bd">
+                <div
+                  class="uni-page-head__title"
+                  style="font-size: 16px; opacity: 1"
+                  data-localize="personal.product_details"
+                >
+                  Product details
+                </div>
+              </div>
+              <div class="uni-page-head-ft"></div>
+            </div>
+            <div class="uni-placeholder"></div>
+          </uni-page-head>
+          <uni-page-wrapper>
+            <uni-page-body>
+              <uni-view>
+                <uni-view class="wealth-bg">
+                  <uni-image class="wealth-bg-img">
+                    <div
+                      style="
+                        background-image: url('images/movebricks_get_profit_bg.png');
+                        background-position: 0% 0%;
+                        background-size: 100% 100%;
+                        background-repeat: no-repeat;
+                      "
+                    ></div>
+                    <img
+                      src="images/movebricks_get_profit_bg.png"
+                      draggable="true"
+                    />
+                  </uni-image>
+                </uni-view>
+                <uni-view class="wealth-scrollDiv">
+                  <uni-view class="boxflex wealth-op">
+                    <uni-view class="boxflex">
+                      <uni-image class="icon">
+                        <div
+                          style="
+                            background-image: url('images/logo3.png');
+                            background-position: 0% 0%;
+                            background-size: 100% 100%;
+                            background-repeat: no-repeat;
+                          "
+                        ></div>
+                        <img src="images/3.png" draggable="true" />
+                      </uni-image>
+                      <uni-view class="boxflex wealth-op-text01">
+                        <uni-text class="fontSize-small wealth-text01-p"
+                          ><span data-localize="personal.1">Get</span>
+                          USDT</uni-text
+                        >
+                        <uni-text class="fontSize-s wealth-text01-p"
+                          ><span>{{card.level}}</span></uni-text
+                        >
+                      </uni-view>
+                    </uni-view>
+                    <uni-view
+                      class="boxflex wealth-op-text01"
+                      style="text-align: right"
+                    >
+                      <uni-text class="fontSize-small wealth-text01-p"
+                        ><span data-localize="personal.2"
+                          >Recent(daily earnings)</span
+                        ></uni-text
+                      >
+                      <uni-text class="fontSize-s yellow wealth-text01-p"
+                        ><span>{{iTofixed(card.rate,2)}}%</span></uni-text
+                      >
+                    </uni-view>
+                  </uni-view>
+                  <uni-view
+                    class="wealth-main"
+                    style="
+                      background-color: rgb(255, 255, 255);
+                      color: rgb(0, 0, 0);
+                      margin: 0px 8% 11px;
+                    "
+                  >
+                    <uni-view class="boxflex">
+                      <uni-view class="wealth-main-text">
+                        <uni-text class="fontSize-s"
+                          ><span>{{card.day}}</span>(<span
+                            data-localize="personal.3"
+                            >Day</span
+                          >)</uni-text
+                        >
+                        <uni-text class="fontSize-small"
+                          ><span data-localize="personal.4"
+                            >Financial cycle</span
+                          ></uni-text
+                        >
+                      </uni-view>
+                      <uni-view class="wealth-main-text">
+                        <uni-text class="fontSize-s"
+                          ><span>{{card.save_min}}</span></uni-text
+                        >
+                        <uni-text class="fontSize-small"
+                          ><span data-localize="personal.5">Minimum</span
+                          >(USDT)</uni-text
+                        >
+                      </uni-view>
+                    </uni-view>
+                  </uni-view>
+                  <uni-view
+                    class="wealth-main"
+                    style="padding-top: 60px; margin-top: -44px"
+                  >
+                    <uni-view class="boxflex">
+                      <uni-view class="wealth-main-text">
+                        <uni-text class="fontSize-xs white"
+                          ><span data-localize="personal.6"
+                            >Dividend time</span
+                          ></uni-text
+                        >
+                        <uni-text
+                          class="fontSize-s yellow"
+                          style="margin-top: 16px"
+                          ><span data-localize="personal.9"
+                            >Daily</span
+                          ></uni-text
+                        >
+                      </uni-view>
+                      <uni-view class="wealth-main-text">
+                        <uni-text class="fontSize-xs white"
+                          ><span data-localize="personal.7"
+                            >托管资金</span
+                          ></uni-text
+                        >
+                        <uni-text
+                          class="fontSize-s yellow"
+                          style="margin-top: 16px"
+                          ><span data-localize="personal.10"
+                            >Return due</span
+                          ></uni-text
+                        >
+                      </uni-view>
+                      <uni-view class="wealth-main-text">
+                        <uni-text class="fontSize-xs white"
+                          ><span data-localize="personal.8"
+                            >Early redemption</span
+                          ></uni-text
+                        >
+                        <uni-text
+                          class="fontSize-s yellow"
+                          style="margin-top: 16px"
+                          ><span>{{card.cancel_rate}}%</span></uni-text
+                        >
+                      </uni-view>
+                    </uni-view>
+                  </uni-view>
+                  <uni-view class="wealth-main">
+                    <uni-view class="boxflex">
+                      <uni-view class="wealth-main-text">
+                        <uni-text class="fontSize-xs white"
+                          ><span data-localize="personal.11"
+                            >Expected revenue</span
+                          >(USDT)</uni-text
+                        >
+                        <uni-text
+                          class="fontSize-s yellow"
+                          style="margin-top: 16px"
+                          ><span>{{importedProducts}}</span></uni-text
+                        >
+                      </uni-view>
+                      <uni-view class="wealth-main-text">
+                        <uni-text class="fontSize-xs white"
+                          ><span data-localize="personal.12"
+                            >Available assets</span
+                          >(USDT)</uni-text
+                        >
+                        <uni-text
+                          class="fontSize-s yellow"
+                          style="margin-top: 16px"
+                          ><span
+                            >{{iTofixed(card.change_balance,2)}}</span
+                          ></uni-text
+                        >
+                      </uni-view>
+                    </uni-view>
+                  </uni-view>
+                  <uni-view class="wealth-main">
+                    <uni-view>
+                      <uni-view data-localize="personal.13"
+                        >Investment amount</uni-view
+                      >
+                      <uni-view class="boxwealth-input boxflex">
+                        <!-- <uni-input style="background: transparent; width: 80%; max-width: 80%; color: rgb(0, 0, 0)">
+                                                    <div class="uni-input-wrapper">
+                                                        <input @input="change($event,item)" :placeholder="getPlace(item)" maxlength="140" pattern="[0-9]*" autocomplete="off" type="number" class="uni-input-input" />
+                                                    </div>
+                                                </uni-input> -->
+                        <uni-input style="color: rgb(0, 0, 0)">
+                          <div class="uni-input-wrapper">
+                            <!-- <div class="uni-input-placeholder input-placeholder" style="display: none">请输入托管金额</div> -->
+                            <input
+                              maxlength="140"
+                              type="number"
+                              class="uni-input-input"
+                              v-model="inputMoney"
+                            />
+                          </div>
+                        </uni-input>
+                        <uni-view class="black">USDT</uni-view>
+                        <uni-button
+                          class="blue btn"
+                          @click="handerAllClick"
+                          data-localize="personal.14"
+                          >All</uni-button
+                        >
+                      </uni-view>
+                    </uni-view>
+                  </uni-view>
+                  <uni-view class="wealth-main">
+                    <uni-view>
+                      <uni-view data-localize="personal.15"
+                        >Mining earns non-stop</uni-view
+                      >
+                      <uni-rich-text style="margin: 11px 0px">
+                        <div>
+                          <p data-localize="personal.16">
+                            Locked-up mining is the profit of mining in the
+                            platform's mining pool by hosting the USDT to the
+                            platform's super-computing power miner
+                          </p>
+                        </div>
+                      </uni-rich-text>
+                    </uni-view>
+                  </uni-view>
+                </uni-view>
+                <uni-button
+                  class="wealth-btn"
+                  @click="taderSubmit"
+                  data-localize="personal.17"
+                  >Subscription</uni-button
+                >
+              </uni-view>
+            </uni-page-body>
+          </uni-page-wrapper>
+        </uni-page>
+      </uni-app>
+    </div>
+  </body>
+</html>
+<script type="text/javascript" src="lib/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="lib/swiper.min.js"></script>
+<script type="text/javascript" src="javascripts/jquery.cookie.js"></script>
+<script type="text/javascript" src="lib/layer_mobile/layer.js"></script>
+<script type="text/javascript" src="lib/vue.min.js"></script>
+<script type="text/javascript" src="lib/jquery.localize.min.js"></script>
+<script type="text/javascript" src="lib/language_cookie.js"></script>
+<script type="text/javascript" src="javascripts/main.js"></script>
+<script type="text/javascript" src="javascripts/detail.js"></script>

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+        <title>锁仓挖矿</title>
+        <link rel="stylesheet" type="text/css" href="css/common.css" />
+        <link rel="stylesheet" type="text/css" href="fonts/iconfont.css" />
+        <link rel="stylesheet" type="text/css" href="font/iconfont.css" />
+        <link rel="stylesheet" type="text/css" href="css/footer.css" />
+        <link rel="stylesheet" type="text/css" href="css/mining.css" />
+        <link rel="stylesheet" type="text/css" href="css/hosted.css" />
+    </head>
+    <style>
+        body {
+            background: #0b1622;
+            background-size: cover;
+            color: #f2f5ff;
+        }
+        .uni-modal__btn {
+            color: red !important;
+        }
+    </style>
+
+    <body>
+        <div id="app" v-cloak>
+            <uni-app class="uni-app--maxwidth">
+                <uni-page>
+                    <uni-page-head uni-page-head-type="default">
+                        <div class="uni-page-head" style="width: 100%; background-color: rgb(16, 32, 48); color: white; transition-duration: 0ms; transition-timing-function: linear">
+                            <div class="uni-page-head-hd">
+                                <div class="uni-page-head-btn"><i class="uni-btn-icon" style="color: white; font-size: 27px" @click="window.location = 'hosted.html'"></i></div>
+                                <div class="uni-page-head-ft"></div>
+                            </div>
+                            <div class="uni-page-head-bd">
+                                <div class="uni-page-head__title" style="font-size: 16px; opacity: 1" data-localize="mining.48">Lock list</div>
+                            </div>
+                            <div class="uni-page-head-ft"></div>
+                        </div>
+                        <div class="uni-placeholder"></div>
+                    </uni-page-head>
+
+                    <uni-page-wrapper>
+                        <uni-page-body>
+                            <uni-view class="blue">
+                                <uni-view class="list" v-for="item in list" :key="item.id">
+                                    <uni-view class="listitem">
+                                        <uni-text><span data-localize="mining.37">Project Number</span></uni-text>
+                                        <uni-label class="uni-label-pointer">{{item.id}}</uni-label>
+                                    </uni-view>
+                                    <uni-view class="listitem">
+                                        <uni-text><span data-localize="mining.38">Currency</span></uni-text>
+                                        <uni-label class="uni-label-pointer">{{item.currency_name}}</uni-label>
+                                    </uni-view>
+                                    <uni-view class="listitem">
+                                        <uni-text><span data-localize="mining.39">Amount of Deposited Coins</span></uni-text>
+                                        <uni-label class="uni-label-pointer">{{item.amount}} {{item.currency_name}}</uni-label>
+                                    </uni-view>
+                                    <uni-view class="listitem">
+                                        <uni-text><span data-localize="mining.40">Total Interest</span></uni-text>
+                                        <uni-label class="uni-label-pointer">{{item.total_interest}} {{item.currency_name}}</uni-label>
+                                    </uni-view>
+                                    <uni-view class="listitem">
+                                        <uni-text><span data-localize="mining.41">Liquidated damages</span></uni-text>
+                                        <uni-label class="uni-label-pointer">{{item.cancel_fee}} {{item.currency_name}}</uni-label>
+                                    </uni-view>
+                                    <uni-view class="listitem">
+                                        <uni-text><span data-localize="mining.42">Lock time</span></uni-text>
+                                        <uni-label class="uni-label-pointer">{{item.start_at}}</uni-label>
+                                    </uni-view>
+                                    <uni-view class="listitem">
+                                        <uni-text><span data-localize="mining.43">Expiration time</span></uni-text>
+                                        <uni-label class="uni-label-pointer">{{item.end_at}}</uni-label>
+                                    </uni-view>
+                                    <uni-view class="listitem">
+                                        <uni-text><span data-localize="mining.44">State</span></uni-text>
+                                        <uni-label v-show="item.status == 1" class="uni-label-pointer" style="color: rgb(76, 175, 80)" data-localize="mining.49">In progress</uni-label>
+                                        <uni-label v-show="item.status == 2" class="uni-label-pointer" style="color: rgb(255, 0, 0)" data-localize="mining.50">Finished</uni-label>
+                                        <uni-label v-show="item.status == -1" class="uni-label-pointer" style="color: rgb(255, 0, 0)" data-localize="mining.51">Canceled</uni-label>
+                                    </uni-view>
+                                    <uni-view class="listitembtn" v-show="item.status == 1"><uni-label class="uni-label-pointer" style="background: rgb(255, 0, 0); color: rgb(255, 255, 255); width: 100%; display: block; text-align: center; padding: 7px 0px; cursor: pointer" @click="modalClick(item)" data-localize="mining.47">Cancel pledge</uni-label></uni-view>
+                                </uni-view>
+                            </uni-view>
+                        </uni-page-body>
+                    </uni-page-wrapper>
+                </uni-page>
+                <uni-actionsheet>
+                    <div class="uni-mask uni-actionsheet__mask" style="display: none"></div>
+                    <div class="uni-actionsheet">
+                        <div class="uni-actionsheet__menu">
+                            <div style="max-height: 260px; overflow: hidden"><div style="transform: translateY(0px) translateZ(0px)"></div></div>
+                        </div>
+                        <div class="uni-actionsheet__action"><div class="uni-actionsheet__cell" style="color: rgb(0, 0, 0)" data-localize="mining.36">Cancel</div></div>
+                        <div></div>
+                    </div>
+                </uni-actionsheet>
+                <uni-modal v-show="isModal">
+                    <div class="uni-mask"></div>
+                    <div class="uni-modal">
+                        <div class="uni-modal__bd">
+                            <span data-localize="mining.52" class="">Pay</span>
+                            <span>{{current && current.cancel_fee}} {{current && current.currency_name}}</span>
+                            <span data-localize="mining.53">Liquidated damages</span>
+                        </div>
+                        <div class="uni-modal__ft">
+                            <div class="uni-modal__btn uni-modal__btn_default" data-localize="mining.36" style="color: rgb(0, 0, 0)" @click="isModal = false">Cancel</div>
+                            <div class="uni-modal__btn uni-modal__btn_primary" data-localize="mining.54" style="color: rgb(0, 122, 255)" @click="submit">Confirm</div>
+                        </div>
+                    </div>
+                </uni-modal>
+            </uni-app>
+        </div>
+    </body>
+</html>
+<script type="text/javascript" src="lib/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="lib/layer_mobile/layer.js"></script>
+<script type="text/javascript" src="javascripts/jquery.cookie.js"></script>
+<script type="text/javascript" src="lib/jquery.localize.min.js"></script>
+<script type="text/javascript" src="lib/language_cookie.js"></script>
+<script type="text/javascript" src="javascripts/main.js"></script>
+<script type="text/javascript" src="lib/vue.min.js"></script>
+<script>
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            isModal: false,
+            list: [],
+            current: null,
+        },
+        mounted() {
+            this.getOrder();
+        },
+        updated() {
+            window.changeLg();
+        },
+        methods: {
+            modalClick(item) {
+                var _ = this;
+                this.isModal = true;
+                _.current = item;
+            },
+            submit() {
+                this.cancel();
+            },
+            cancel() {
+                var _ = this;
+                layer_loading();
+                initDataTokens(
+                    {
+                        url: 'deposit/cancel',
+                        type: 'post',
+                        data: {
+                            id: _.current.id,
+                        },
+                    },
+                    function (res) {
+                        layer_msg(res.message);
+                        if (res.type != 'ok') return;
+                        _.isModal = false;
+                        _.getOrder();
+                        _.$forceUpdate();
+                    }
+                );
+            },
+            getOrder() {
+                var _ = this;
+                layer_loading();
+                initDataTokens(
+                    {
+                        url: 'deposit/order',
+                        type: 'post',
+                    },
+                    function (res) {
+                        if (res.type != 'ok') return;
+                        _.list = res.message.list;
+                        _.$forceUpdate();
+                    }
+                );
+            },
+        },
+    });
+</script>

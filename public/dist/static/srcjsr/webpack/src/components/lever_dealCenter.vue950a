@@ -1,0 +1,11 @@
+var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{class:_vm.skins=='days'?'home whiteBg':'home'},[_c('indexHeader'),_vm._v(" "),_c('div',{staticClass:"flex content between"},[_c('div',{staticClass:"main-top"},[_c('div',{staticClass:"tv-box"},[(this.quotationList.length > 0)?_c('tv',{attrs:{"quotationList":_vm.quotationList,"symbol":_vm.symbol,"types":_vm.types}}):_vm._e()],1),_vm._v(" "),_c('div',{staticClass:"Kline"},[_c('kline',{attrs:{"symbol":_vm.symbol}})],1),_vm._v(" "),_c('div',{staticClass:"tran-box"},[_c('leverTransaction',{attrs:{"leverData":_vm.leverData}})],1)]),_vm._v(" "),_c('div',{staticClass:"main-bottom"},[_c('div',{staticClass:"balance-box"},[_c('div',{staticClass:"title flex"},[_c('img',{attrs:{"src":require("../../static/imgs/money.png"),"alt":""}}),_vm._v(" "),_c('p',[_vm._v(_vm._s(_vm.$t('miscro.contractBalance')))])]),_vm._v(" "),_c('ul',{staticClass:"lever-account"},_vm._l((_vm.walletList),function(item){return _c('li',{directives:[{name:"show",rawName:"v-show",value:(item.is_lever == 1),expression:"item.is_lever == 1"}],key:item.id},[_vm._v(_vm._s(item.lever_balance)+" "+_vm._s(item.currency_name))])}))]),_vm._v(" "),_c('div',{staticClass:"exchange-box"},[_c('exchange',{attrs:{"topBuy":_vm.topBuy,"symbol":_vm.symbol}})],1),_vm._v(" "),_c('div',{staticClass:"trade-box"},[_c('trade',{attrs:{"leverTrade":_vm.leverTrade}})],1)])])],1)}
+var staticRenderFns = []
+var esExports = { render: render, staticRenderFns: staticRenderFns }
+export default esExports
+
+
+//////////////////
+// WEBPACK FOOTER
+// ./node_modules/vue-loader/lib/template-compiler?{"id":"data-v-57f7f301","hasScoped":true,"transformToRequire":{"video":["src","poster"],"source":"src","img":"src","image":"xlink:href"},"buble":{"transforms":{}}}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./src/components/lever_dealCenter.vue
+// module id = null
+// module chunks = 

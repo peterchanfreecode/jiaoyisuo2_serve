@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+	<title>Setting</title>
+    <link rel="stylesheet" type="text/css" href="css/common.css" />
+	<link rel="stylesheet" type="text/css" href="fonts/iconfont.css" />
+	<link rel="stylesheet" type="text/css" href="font/iconfont.css" />
+	<link rel="stylesheet" type="text/css" href="css/footer.css">
+</head>
+<style>
+    .lang-fixs{
+        /* position: fixed; */
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 4;
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -webkit-flex-direction: column;
+        flex-direction: column;
+        padding: 15px;
+    }
+    .lang-boxs{
+        /* margin-top: 10%; */
+        bottom: 0;
+        width: 100%;
+        z-index: 99;
+        text-align: center;
+    }
+    .active {
+        padding: 10px;
+        font-size: 16px;
+        border-bottom: 1px solid #eee;
+        height: 40px;
+        margin-bottom: 10px;
+        text-align: center;
+        -webkit-border-radius: 5px;
+        border-radius: 5px;
+        -webkit-box-ordinal-group: 0;
+        -webkit-order: -1;
+        order: -1;
+        background: #3c475c;
+        color: #fff;
+        border: solid 1px #3c475c;
+    }
+    .lang-txts{
+        padding: 10px;
+        font-size: 16px;
+        border-bottom: 1px solid #eee;
+        height: 40px;
+        margin-bottom: 10px;
+        text-align: center;
+        color: #333;
+        background-image: -webkit-gradient(linear,left top,left bottom,from(#fff),to(#e8e8e8));
+        background-image: -webkit-linear-gradient(#fff,#e8e8e8);
+        background-image: linear-gradient(#fff,#e8e8e8);
+        border: solid 1px #e5e5e5;
+        -webkit-border-radius: 5px;
+        border-radius: 5px;
+    }
+	.header-top{
+		height: 40px;
+		line-height: 40px;
+		width: 100%;
+		/* position: fixed; */
+		z-index: 10;
+		color: #333;
+		background-color: #fff;
+		z-index: 10;
+		border-bottom: 1px solid #f1f1f1;
+		text-align: center;
+	}
+</style>
+
+<body>
+	<div id="app" v-cloak>
+	    
+	    <header class="header-top">
+			<a class="back mt5" href="index.html">
+			</a>
+			<h4 class="ft16" data-localize="zdy.setting">Setting</h4>
+			<!-- <div class="right imgRight">
+					编辑
+				</div> -->
+		</header>
+		<div class="lang-fixs">
+	        <div class="lang-boxs">
+	            <div @click="tabLang(item.lang)" v-for="(item,index) in langtxt" :class="index==langIndex?'active':'lang-txts'">
+					<!-- <a href="index.html"></a> -->
+					{{item.txt}}</div>
+	        </div>
+	    </div>
+		<!-- <div class="header-space"></div> -->
+	</div>
+	<script type="text/javascript" src="lib/jquery-2.1.1.min.js"></script>
+	<script type="text/javascript" src="lib/layer_mobile/layer.js"></script>
+	<script type="text/javascript" src="javascripts/jquery.cookie.js"></script>
+	<script type="text/javascript" src="lib/jquery.localize.min.js"></script>
+	<script type="text/javascript" src="lib/language_cookie.js"></script>
+	<script type="text/javascript" src="javascripts/main.js"></script>
+	<script type="text/javascript" src="lib/vue.min.js"></script>
+	<script>
+	    new Vue({
+	        el:"#app",
+	        data:{
+	            lang:"",
+				langtxt:[{"txt":getlg('zwjt'),'lang':"zh"},{"txt":getlg('yy'),"lang":"en"}],
+	            //langtxt:[{"txt":getlg('zwjt'),'lang':"zh"},{"txt":getlg('zwft'),"lang":"hk"},{"txt":getlg('yy'),"lang":"en"},{"txt":getlg('hy'),"lang":"kor"},{"txt":getlg('ry'),"lang":"jp"},{"txt":getlg('ty'),"lang":"th"}],
+	            langIndex:1
+	        },
+	        mounted(){
+	            if(localStorage.getItem('language')=="zh"){
+	                this.lang=getlg('zwjt');
+	                this.langIndex=0;
+	            }
+				if(localStorage.getItem('language')=="en"){
+					this.lang=getlg('yy');
+					this.langIndex=1;
+				}
+	            // if(localStorage.getItem('language')=="hk"){
+	            //     this.lang=getlg('zwft');
+	            //     this.langIndex=1;
+	            // }
+	            // if(localStorage.getItem('language')=="jp"){
+	            //     this.lang=getlg('ry');
+	            //     this.langIndex=4;
+	            // }
+	            // if(localStorage.getItem('language')=="th"){
+	            //     this.lang=getlg('ty');
+	            //     this.langIndex=5;
+	            // }
+	            // if(localStorage.getItem('language')=="kor"){
+	            //     this.lang=getlg('hy');
+	            //     this.langIndex=3;
+	            // }
+	        },
+	        methods:{
+	            tabLang(lang){
+	                //setLocal('language', lang);
+    	            setLang(lang , ()=> window.location.href='index.html' )
+					//location.href=document.referrer;
+    	            //location.reload();
+					//window.history.go(-1)
+					// location.replace('index.html')
+					//location.href='index.html'
+	            }
+	        }
+	    })
+	</script>
+</body>
+
+</html>

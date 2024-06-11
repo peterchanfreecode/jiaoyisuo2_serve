@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Deposit</title>
+    <link rel="stylesheet" href="css/common.css">
+</head>
+<style>
+    /* .codes {
+        width: 220px;
+        margin: 50px auto 20px auto;
+    }
+
+    #code {
+        width: 220px;
+        height: 220px;
+        border: 10px solid #fff;
+    }
+    .tab-list{
+    	flex-direction: row;
+    	margin:1rem 5% 0;
+    	display: none;
+    }
+    .tab-list span:last-child{
+    	margin-left: 5%;
+    }
+    .tab-list span{
+    	color:#fff;
+    	width: 47%;
+	    border-radius: 20px;
+	    padding: 0.5rem 0;
+	    text-align: center;
+	    border:1px solid #588bf7;
+	    color:#333;
+    }
+    .tabactive{
+    	color:#fff !important;
+    	background: #588bf7;
+    }
+    .cz-row {
+	    display: flex;
+	    flex-direction: row;
+	    align-items: center;
+	    margin: 1rem 5%;
+	}
+	.cz-row label {
+	    width: 30%;
+	    color: #999;
+	    font-size: 1rem;
+	}
+	.cz-row input {
+	    width: 70%;
+	    background: #ddd;
+	    padding: 0.3rem;
+	    color: #999;
+	    border-radius: 3px;
+	}
+	.cz-row{
+		color:#f00;
+	}
+	.qb-box {
+	    margin: 1rem 5%;
+	    font-size: 1rem;
+	    color: #999;
+	}
+	.qb-box input {
+	    display: block;
+	    width: 100%;
+	    color: #999;
+	    background: #ddd;
+	    padding: 0.3rem;
+	    border-radius: 3px;
+	    margin: 0.3rem 0;
+	}
+	.qb-box span {
+	    font-size: 0.8rem;
+	    color: #f00;
+	}
+	.ck-btn {
+	    background: #588bf7;
+	    margin: 10px 16% 0;
+	    border-radius: 5px;
+	    padding: 10px 0;
+	    color: #fff;
+	    text-align: center;
+	}
+
+    .haokan1{
+        height: 180px;
+        width: 80px;
+    }
+    .haokan1 img{
+        height: 100%;
+    }
+    .inputFile{
+        width: 100px !important;
+        height: 100px !important;
+        position: relative !important;
+        top: -150px;
+        left: 30px;
+        opacity: 0;
+    }
+    .erc20Btc{
+        background: #588bf7;
+        width: 80px;
+        height: 30px;
+        text-align: center;
+        line-height: 30px;
+        font-weight: 600;
+        color: #fff;
+        margin-left: 30px;
+        margin-top: 20px;
+        border-radius: 6px;
+    } */
+    .bgWhite{
+        min-height: 100vh;
+        background:#F6F6F6;
+
+    }
+    .header{
+        width: 100%;
+        height: 162px;
+        background-image: url('./images/charge_money_header_img.webp');
+        background-size: 100% 100%;
+
+    }
+    .header img{
+        width: 40px;
+        height: 40px;
+        margin-top: 20px;
+        margin-left: 10px;
+    }
+    .header .header-span{
+        color: #fff;
+        font-size: 27px;
+        font-weight: 500;
+        display: inline-block;
+        position: absolute;
+        top: 20px;
+        left: 60px;
+    }
+    .content{
+        width: 90%;
+        background: #fff;
+        border-radius: 15px;
+        position: absolute;
+        padding-bottom: 10px;
+        top: 120px;
+        left: 5%;
+    }
+    .content .top{
+        height: 40px;
+    }
+    .content .top .erc20-span{
+        background: #2A5ADA;
+        border-radius: 15px;
+        font-size: 16px;
+        font-family: PingFang SC;
+        color: #FFFFFF;
+        padding: 5px 10px;
+        margin-left: 10px;
+        float: left;
+        margin-top: 10px;
+    }
+    .content .top img{
+        width: 175px;
+        height: 27px;
+        float: right;
+        margin-top: 10px;
+        margin-right: 30px;
+    }
+    .code{
+        width: 160px;
+        height: 160px;
+        margin: 0 auto;
+        margin-left: calc(50% - 80px);
+        margin-top: 10px;
+    }
+    .url{
+        text-align: center;
+        display: block;
+        width: 400px;
+        font-weight: 600;
+        margin: 10px 0;
+        display: inline-block;
+        width: 250px;
+        word-wrap: break-word;
+        white-space: normal;
+        margin-left: calc(50% - 125px);
+    }
+    .copy-url{
+        width: 96px;
+        height: 30px;
+        background: #2A5ADA;
+        line-height: 30px;
+        text-align: center;
+        font-weight: 600;
+        border-radius: 15px;
+        color: #fff;
+        font-size: 15px;
+        margin-left: calc(50% - 48px);
+        font-family: PingFang SC;
+    }
+    p{
+        height: 19px;
+        font-size: 14px;
+        font-family: Work Sans;
+        font-weight: 400;
+        line-height: 24px;
+        color: #23262F;
+        margin-left: 10px;
+        margin-top: 10px;
+    }
+    .num-ipt{
+        width: 90%;
+        height: 38px;
+        border: 2px solid #DFDFDF;
+        opacity: 1;
+        border-radius: 16px;
+        margin-left: 5%;
+        margin-top: 10px;
+        padding: 0 20px;
+    }
+    .upload{
+        height: 108px;
+        max-width: 160px;
+        /* margin-left: calc(50% - 75px); */
+        margin-top: 10px;
+    }
+    .upload-ipt{
+        width: 150px;
+        height: 100px;
+        opacity: 0;
+        background: tan;
+        position: absolute;
+        margin-left: -150px;
+        margin-top: 10px;
+    }
+   
+    #submit{
+        width: 90%;
+        height: 39px;
+        background: #2A5ADA;
+        /* opacity: 1; */
+        border-radius: 8px;
+        line-height: 39px;
+        font-family: PingFang SC;
+        font-weight: 600;
+        text-align: center;
+        font-size: 16px;
+        color: #FFFFFF;
+        margin-left: calc(50%-175px);
+        margin-left: 5%;
+        margin-top: 10px;
+    }
+    .colorGrey{
+        padding: 10px;
+        width: 100%;
+        margin-top: 10px;
+        font-size: 12px;
+        font-family: Work Sans;
+        font-weight: 400;
+        line-height: 20px;
+        color: #23262F;
+    }
+ 
+    
+
+</style>
+
+<body class="bgWhite">
+    <div class="header">
+        <a href="javascript:history.go(-1)">
+            <img src="./images/charge_money_back.png"></img>
+        </a>
+        <span class="header-span" data-localize="assets.cmoney">Deposit</span>
+    </div>
+    <div class="content">
+        <div class="top">
+            <span class="erc20-span">ERC20</span>
+            <img src="./images/charge_money_log.webp" alt="">
+        </div>
+        <div class="code" id="code"></div>
+        <div>
+            <b class="url address">
+                
+            </b>
+            <div class="copy-url copy" data-localize="assets.copyaddress">Copy address</div>
+        </div>
+        <p data-localize="recharge.numberDeposits">Number of deposits：</p>
+        <input class="num-ipt" id="number" type="number">
+        <p data-localize="recharge.uploadScreenshot">Upload screenshot：</p>
+        <div style="text-align: center;">
+          <img class="upload" id="view" src="./images/charge_money_upload.webp" alt="">
+          <input class="upload-ipt inputFile" id="file" accept="image/*" name='file' type="file">
+        </div>
+
+        <div id="submit" data-localize="recharge.rechargeQuantity">Submit</div>
+
+        <div class="colorGrey">
+            * <span data-localize="assets.a01">Do not recharge any non-</span> <span class="titles"></span><span data-localize="assets.a02"> Assets，</span><span data-localize="assets.a03"> Otherwise, assets will not be recovered.</span><br>
+            <!-- <span data-localize="assets.a06">Minimum recharge amount:</span>100 <span class="titles"></span>。<br> -->
+            * <span data-localize="assets.a10">Your account will be checked in after 3-6 network confirmations.</span> <br>
+            * <span data-localize="assets.a11">All GEMINI coinage addresses are multi-signature cold wallet addresses, and all wallets have not been read by networked machines.</span> <br>
+        </div>
+
+       
+    </div>
+
+
+    <!-- <header class="header">
+        <a class="back mt5" href="javascript:history.go(-1)">
+
+        </a>
+        <h4 class="ft16" data-localize="assets.cmoney"></h4>
+    </header> -->
+    <!-- <div class="header-space"></div> -->
+    <!-- <div class="tab-list">
+    </div>
+    <div class="erc20Btc">ERC20</div>
+    <div class="plr15">
+        <div class="codebox">
+            <div class="codes">
+                <div id="code"></div>
+            </div>
+        </div>
+        <div class="address tc plr10 ft14 "></div>
+        <div class="copy blue tc mt10 ft14" data-localize="assets.copyaddress">Copy address</div>
+       <div class="cz-row">
+	    	<label data-localize="recharge.numberDeposits">Number of deposits：</label>
+	    	<input id="number" type="number">
+	    </div>
+
+        <div class="qb-box">
+	    	<aside data-localize="recharge.uploadScreenshot">Upload screenshot：</aside>
+            <div class="qwe">
+				<div id="prev" class="haokan1">
+					<img src="images/myimg/688660269851391423.png" alt="" id="view" />
+					<input type="file" class="inputFile" id="file" accept="image/*" name='file' />
+				</div>
+			</div>
+	    </div>
+	    <div class="ck-btn" id="submit" data-localize="recharge.rechargeQuantity">Submit</div>
+        <div class="ft12 mt40 colorGrey">
+            * <span data-localize="assets.a01">Do not recharge any non-</span> <span class="titles"></span><span data-localize="assets.a02">Assets，</span><span data-localize="assets.a03">Otherwise, assets will not be recovered.</span><br>
+            * <span data-localize="assets.a06">Minimum recharge amount:</span>100 <span class="titles"></span>。<br>
+            * <span data-localize="assets.a10">Your account will be checked in after 3-6 network confirmations.</span> <br>
+            * <span data-localize="assets.a11">All GEMINI coinage addresses are multi-signature cold wallet addresses, and all wallets have not been read by networked machines.</span>
+        </div>
+
+    </div> -->
+    <script type="text/javascript" src="lib/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="javascripts/jquery.cookie.js"></script>
+    <script type="text/javascript" src="lib/layer_mobile/layer.js"></script>
+    <script type="text/javascript" src="javascripts/jquery.qrcode.min.js"></script>
+    <script type="text/javascript" src="javascripts/clipboard.min.js"></script>
+    <script type="text/javascript" src="lib/jquery.localize.min.js"></script>
+    <script type="text/javascript" src="lib/language_cookie.js"></script>
+    <script type="text/javascript" src="javascripts/main.js"></script>
+    <script>
+        var token = get_user_login();
+        var currency = get_param('id')
+        var name = get_param('name')
+        var imgUrl = ''
+        $(function () {
+            $('#file').change(function () {
+				var formData = new FormData();
+				formData.append("file", $("#file")[0].files[0]);
+				var i = layer_loading()
+				$.ajax({
+					url: _API + 'upload',
+					type: 'post',
+					data: formData,
+					processData: false,
+					contentType: false,
+					success: function (msg) {
+						if (msg.type == 'ok') {
+							$("#view").attr("src", msg.message);
+							setTimeout(function () {
+								layer_close(i);
+							}, 500)
+                            imgUrl = msg.message
+						} else {
+							$("#view").attr("src", 'images/myimg/688660269851391423.png');
+							layer_msg(msg.message)
+						}
+					}
+				});
+			});
+
+        	$('#submit').on('click',function(){
+				var acc = $('#address').val()
+				var money = $('#number').val()
+				var url = _API + 'wallet/charge_req'
+				//console.log(money);
+				layer_loading();
+				$.ajax({
+					type:'POST',
+					url:url,
+					data:{
+						amount:money,
+						account:acc,
+						currency:currency,
+                        charge_url: imgUrl
+					},
+					 dataType: "json",
+					beforeSend: function beforeSend(request) {
+		                request.setRequestHeader("Authorization", token);
+		            },
+					success: function(res){
+		                layer_close();
+		                if (res.type=="ok"){
+		                	$('#address').val('')
+		                	$('#number').val('')
+		                    layer_msg(res.message)
+                            setTimeout(()=>{
+                                window.history.go(-1)
+                            },1000)
+		                } else {
+		                    layer_msg(res.message);
+		                }
+		            }
+				})
+			})
+            // FastClick.attach(document.body);
+            $('.titles').html(name)
+            getData();
+            // getrate();
+            $('.copy').click(function () {
+                var adre = $('.address').text();
+                copy(adre);
+            })
+        })
+        // 生成二维码
+        function code(addre=111) {
+            $('#code').qrcode({
+                width: 160, //宽度
+                height: 160, //高度
+                text: addre
+            });
+        }
+        // 复制地址
+        function copy(addre) {
+            var content = addre;
+            var clipboard = new Clipboard('.copy', {
+                text: function () {
+                    return content;
+                }
+            });
+            clipboard.on('success', function (e) {
+                layer_msg(getlg('copys'))
+            });
+
+            clipboard.on('error', function (e) {
+                layer_msg(getlg('pcopy'))
+            });
+        }
+
+        function getData() {
+            layer_loading();
+            $.ajax({
+                type: "POST",
+                url: _API + 'wallet/get_in_address',
+                data: {
+                    currency: currency
+                },
+                dataType: "json",
+                async: true,
+                beforeSend: function beforeSend(request) {
+                    request.setRequestHeader("Authorization", token);
+                },
+                success: function (res) {
+                	//console.log(res);
+                    layer_close();
+                    if (res.type == "ok") {
+                    	let data=res.message;
+                        code(data.address);
+                        copy(data.address);
+                        $(".address").html(data.address);
+                    	// if(data.erc20){
+                    	// 	$(".tab-list").css('display','flex');
+                    	// 	var num=0;
+                    	// 	for(let i in data){
+                    	// 		if(num==0){
+	                    // 			$(".tab-list").append($("<span onclick='tabCode(this)' class='tabactive' data-address="+data[i]+">"+i+"</span>"));
+	                    // 			code(data[i]);
+		                //         	copy(data[i]);	
+                    	// 			$(".address").html(data[i]);
+                    	// 		}else{
+                    	// 			$(".tab-list").append($("<span onclick='tabCode(this)' data-address="+data[i]+">"+i+"</span>"));
+                    	// 		}
+                    	// 		num++;
+                    	// 	}
+                    	// 	// code(res.message.erc20);
+	                    //  //   copy(res.message.erc20);	
+                    	// }else{
+                    	// 	$('.address').html(data)
+	                    //     code(data);
+	                    //     copy(data);	
+                    	// }
+                    } else {
+                        layer_msg(data);
+                    }
+                }
+            })
+        }
+
+        function getrate() {
+            $.ajax({
+                type: "POST",
+                url: _API + 'wallet/get_info',
+                data: {
+                    currency: currency
+                },
+                dataType: "json",
+                async: true,
+                beforeSend: function beforeSend(request) {
+                    request.setRequestHeader("Authorization", token);
+                },
+                success: function (res) {
+                    layer_close();
+                    if (res.type == "ok") {
+                        $('.mainnum').html(iTofixed(res.message.min_number,2))
+                    } else {
+                        layer_msg(res.message)
+                    }
+                }
+            })
+        }
+        function tabCode(that){
+        	$(".tab-list span").removeClass('tabactive');
+        	$(that).addClass("tabactive");
+        	let address=$(that).attr('data-address');
+        	 $("canvas").remove();
+        	 code(address);
+             copy(address);
+             $('.address').html(address);
+        }
+    </script>
+</body>
+
+</html>

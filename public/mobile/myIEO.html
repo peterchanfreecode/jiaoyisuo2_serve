@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+        <title>我的申购</title>
+        <link rel="stylesheet" type="text/css" href="css/common.css" />
+        <link rel="stylesheet" type="text/css" href="fonts/iconfont.css" />
+        <link rel="stylesheet" type="text/css" href="font/iconfont.css" />
+        <link rel="stylesheet" type="text/css" href="css/footer.css" />
+        <link rel="stylesheet" type="text/css" href="css/mining.css" />
+        <link rel="stylesheet" type="text/css" href="css/ieo.css" />
+        <link rel="stylesheet" href="../layui/css/layui.css" media="all" />
+    </head>
+    <style>
+        body {
+            background: #0b1622;
+            background-size: cover;
+            color: #f2f5ff;
+        }
+        uni-view {
+            box-sizing: border-box;
+            font-size: 12px !important;
+            line-height: 1.2 !important;
+        }
+        .flex {
+            display: flex;
+            flex-direction: row;
+        }
+        .alcenter {
+            align-items: center;
+        }
+        .flex1 {
+            flex: 1 !important;
+        }
+        .title {
+            font-weight: 500;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            margin-bottom: 0;
+            text-align: inherit !important;
+        }
+    </style>
+    <body>
+        <div id="app">
+            <body class="uni-body pages-ieo-my">
+                <uni-app class="uni-app--maxwidth">
+                    <uni-page data-page="pages/ieo/my">
+                        <uni-page-head uni-page-head-type="default">
+                            <div class="uni-page-head" style="background-color: rgb(16, 32, 48); width: 100%; color: white; transition-duration: 0ms; transition-timing-function: linear">
+                                <div class="uni-page-head-hd">
+                                    <div class="uni-page-head-btn"><i class="uni-btn-icon" style="color: white; font-size: 27px" @click="window.history.go(-1)"></i></div>
+                                    <div class="uni-page-head-ft"></div>
+                                </div>
+                                <div class="uni-page-head-bd">
+                                    <div class="uni-page-head__title" style="font-size: 16px; opacity: 1" data-localize="ieo.2">
+                                        我的申购
+                                    </div>
+                                </div>
+                                <div class="uni-page-head-ft"></div>
+                            </div>
+                            <div class="uni-placeholder"></div>
+                        </uni-page-head>
+                        <uni-page-wrapper>
+                            <uni-page-body>
+                                <uni-view class="blue">
+                                    <uni-view class="bgPart mr10 ml10 mt10 mb10 pt10 pb10" style="border-radius: 8px" v-for="item in data" :key="item.id">
+                                        <uni-view class="ft12 ptb5 blue4 plr10">
+                                            <uni-view class="flex alcenter">
+                                                <uni-view class="flex1" style="text-align: left">
+                                                    <uni-view class="title"><span>{{getlg('ieo_6')}}</span></uni-view>
+                                                    <uni-view class="content">{{item.coin_amount}} {{item.currency_name}}</uni-view>
+                                                </uni-view>
+                                                <uni-view class="flex1" style="text-align: center">
+                                                    <uni-view class="title" ><span>{{getlg('ieo_7')}}</span></uni-view>
+                                                    <uni-view class="content">{{iTofixed(item.price,2)}} {{item.pay_currency_name}}</uni-view>
+                                                </uni-view>
+                                                <uni-view class="flex1" style="text-align: right">
+                                                    <uni-view class="title"><span>{{getlg('ieo_8')}}</span></uni-view>
+                                                    <uni-view class="content">{{item.status}}</uni-view>
+                                                </uni-view>
+                                            </uni-view>
+                                            <uni-view class="flex alcenter">
+                                                <uni-view class="flex1" style="text-align: left">
+                                                    <uni-view class="title"><span>{{getlg('ieo_9')}}</span></uni-view>
+                                                    <uni-view class="content">{{item.created_at}}</uni-view>
+                                                </uni-view>
+                                                <uni-view class="flex1" style="text-align: right">
+                                                    <uni-view class="title"><span>{{getlg('ieo_10')}}</span></uni-view>
+                                                    <uni-view class="content">{{item.release_time || ''}}</uni-view>
+                                                </uni-view>
+                                            </uni-view>
+                                        </uni-view>
+                                    </uni-view>
+                                </uni-view>
+                            </uni-page-body>
+                        </uni-page-wrapper>
+                    </uni-page>
+                </uni-app>
+            </body>
+        </div>
+    </body>
+</html>
+<script type="text/javascript" src="lib/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="lib/swiper.min.js"></script>
+<script type="text/javascript" src="javascripts/jquery.cookie.js"></script>
+<script type="text/javascript" src="lib/layer_mobile/layer.js"></script>
+<script type="text/javascript" src="lib/vue.min.js"></script>
+<script type="text/javascript" src="lib/jquery.localize.min.js"></script>
+<script type="text/javascript" src="lib/language_cookie.js"></script>
+<script type="text/javascript" src="javascripts/main.js"></script>
+<script>
+    var vm = new Vue({
+    el: '#app',
+    data() {
+        return {
+            data: [],
+        };
+    },
+    mounted() {
+        this.getData();
+    },
+    updated() {},
+    methods: {
+        getData() {
+            var _ = this;
+            initDataTokens(
+                {
+                    url: 'project/myOrder',
+                    type: 'post',
+                },
+                function (res) {
+                    if (res.type != 'ok') return;
+                    _.data = res.message;
+                }
+            );
+        },
+    },
+});
+
+</script>

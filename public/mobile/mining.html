@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+        <title>锁仓挖矿</title>
+        <link rel="stylesheet" type="text/css" href="css/common.css" />
+        <link rel="stylesheet" type="text/css" href="fonts/iconfont.css" />
+        <link rel="stylesheet" type="text/css" href="font/iconfont.css" />
+        <link rel="stylesheet" type="text/css" href="css/footer.css" />
+        <link rel="stylesheet" type="text/css" href="css/mining.css" />
+    </head>
+    <style>
+        body {
+            background: #0b1622;
+            background-size: cover;
+            color: #f2f5ff;
+        }
+    </style>
+
+    <body>
+        <div id="app" v-cloak>
+            <body class="uni-body pages-lockming-info">
+                <uni-app class="uni-app--maxwidth">
+                    <uni-page>
+                        <uni-page-head uni-page-head-type="default">
+                            <div class="uni-page-head" style="background-color: rgb(16, 32, 48); color: rgb(255, 255, 255); width: 100%">
+                                <div class="uni-page-head-hd">
+                                    <div class="uni-page-head-btn">
+                                        <i class="uni-btn-icon" style="color: rgb(255, 255, 255); font-size: 27px" @click="window.location = 'index.html'"></i>
+                                    </div>
+                                    <div class="uni-page-head-ft"></div>
+                                </div>
+                                <div class="uni-page-head-bd">
+                                    <div class="uni-page-head__title" style="font-size: 16px; opacity: 1" data-localize="mining.title">Mining by lock up</div>
+                                </div>
+                                <div class="uni-page-head-ft"></div>
+                            </div>
+                            <div class="uni-placeholder"></div>
+                        </uni-page-head>
+                        <uni-page-wrapper>
+                            <uni-page-body>
+                                <uni-view class="body">
+                                    <uni-view class="title" data-localize="mining.stop">Mining earns non-stop</uni-view>
+                                    <uni-view class="desc" data-localize="mining.locked">Locked-up mining is the profit of mining in the platform's mining pool by hosting the usdt to the platform's super-computing power miner</uni-view>
+                                    <uni-view class="main w100">
+                                        <uni-view class="main-title" data-localize="mining.product">Product highlights</uni-view>
+                                        <uni-view class="flex alcenter ptb5">
+                                            <uni-view class="flex1">
+                                                <uni-view class="main-text-title" data-localize="mining.1">Fetch on demand</uni-view>
+                                                <uni-view class="main-text-desc small" data-localize="mining.2">Dividend payout cycle</uni-view>
+                                            </uni-view>
+                                            <uni-view class="flex1">
+                                                <uni-view class="main-text-title" data-localize="mining.3">Issued daily</uni-view>
+                                                <uni-view class="main-text-desc small" data-localize="mining.4">Current interest</uni-view>
+                                            </uni-view>
+                                        </uni-view>
+                                        <uni-view class="flex alcenter ptb5">
+                                            <uni-view class="flex1" style="text-align: center">
+                                                <uni-image class="wt40 h40 mt30 mb10">
+                                                    <div style="background-image: url('/images/ic_money_safe.png'); background-position: 0% 0%; background-size: 100% 100%; background-repeat: no-repeat"></div>
+                                                    <img src="/images/ic_money_safe.png" draggable="true" />
+                                                </uni-image>
+                                                <uni-view class="small ml10 mr10" data-localize="mining.5">100% capital security</uni-view>
+                                            </uni-view>
+                                            <uni-view class="flex1" style="text-align: center">
+                                                <uni-image class="wt40 h40 mt30 mb10">
+                                                    <div style="background-image: url('/images/ic_money_pack.png'); background-position: 0% 0%; background-size: 100% 100%; background-repeat: no-repeat"></div>
+                                                    <img src="/images/ic_money_pack.png" draggable="true" />
+                                                </uni-image>
+                                                <uni-view class="small ml10 mr10" data-localize="mining.6">Continuous revenue on holidays</uni-view>
+                                            </uni-view>
+                                            <uni-view class="flex1" style="text-align: center">
+                                                <uni-image class="wt40 h40 mt30 mb10">
+                                                    <div
+                                                        style="
+                                                            background-image: url('data:image/png;base64,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');
+                                                            background-position: 0% 0%;
+                                                            background-size: 100% 100%;
+                                                            background-repeat: no-repeat;
+                                                        "
+                                                    ></div>
+                                                    <img
+                                                        src="data:image/png;base64,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"
+                                                        draggable="true"
+                                                    />
+                                                </uni-image>
+                                                <uni-view class="small ml10 mr10" data-localize="mining.7">Value of the day after successful deposit</uni-view>
+                                            </uni-view>
+                                        </uni-view>
+                                    </uni-view>
+                                    <uni-view class="main w100">
+                                        <uni-view class="main-title" data-localize="mining.8">Income calculation</uni-view>
+                                        <uni-view class="mb5" style="font-size: 1rem; font-weight: 700" data-localize="mining.9">Income calculation</uni-view>
+                                        <uni-view class="small" style="line-height: 1.1rem">
+                                            <uni-rich-text>
+                                                <div>
+                                                    <p data-localize="mining.10">The member locks 10000U on the platform and chooses a five-day period, and the daily output is 0.3% to 0.5% of the locked position amount. The daily output is as follows:</p>
+                                                    <p data-localize="mining.11">Minimum：10000U x 0.3%=30 U</p>
+                                                    <p data-localize="mining.12">Maximum：10000U x 0.5%=50 U</p>
+                                                    <p data-localize="mining.13">That is, you can get 150U~250U of income after 5 days. The income is issued daily, and the issued income can be deposited and withdrawn at any time. After the lock-up principal expires, it will be automatically transferred to your asset account.</p>
+                                                </div>
+                                            </uni-rich-text>
+                                        </uni-view>
+                                    </uni-view>
+                                    <uni-view class="main w100">
+                                        <uni-view class="mb5" style="font-size: 1rem; font-weight: 700" data-localize="mining.14">About liquidated damages</uni-view>
+                                        <uni-view class="small" style="line-height: 1.1rem">
+                                            <uni-rich-text>
+                                                <div>
+                                                    <p data-localize="mining.15">If you wish to transfer out the unexpired principal, a liquidated damage will be incurred. Liquidated damages = default settlement ratio * remaining days * locked position quantity.</p>
+                                                    <p data-localize="mining.16">Example: The default settlement ratio for locked warehouse mining is 0.4%, the remaining 3 days expire, and the locked warehouse quantity is 1000, then the liquidated damage = 0.4%*3*1000=12U, and the actual principal refund is 1000U-12U=988U</p>
+                                                </div>
+                                            </uni-rich-text>
+                                        </uni-view>
+                                    </uni-view>
+                                    <uni-view><uni-navigator class="togoBtn" @click="participateClick" data-localize="mining.17">I want to participate</uni-navigator></uni-view>
+                                </uni-view>
+                            </uni-page-body>
+                        </uni-page-wrapper>
+                    </uni-page>
+                    <uni-actionsheet>
+                        <div class="uni-mask uni-actionsheet__mask" style="display: none"></div>
+                        <div class="uni-actionsheet">
+                            <div class="uni-actionsheet__menu">
+                                <div style="max-height: 260px; overflow: hidden">
+                                    <div style="transform: translateY(0px) translateZ(0px)"></div>
+                                </div>
+                            </div>
+                            <div class="uni-actionsheet__action">
+                                <div class="uni-actionsheet__cell" style="color: rgb(0, 0, 0)">Cancel</div>
+                            </div>
+                            <div></div>
+                        </div>
+                    </uni-actionsheet>
+                    <uni-modal style="display: none">
+                        <div class="uni-mask"></div>
+                        <div class="uni-modal">
+                            <div class="uni-modal__bd"></div>
+                            <div class="uni-modal__ft">
+                                <div class="uni-modal__btn uni-modal__btn_default" style="color: rgb(0, 0, 0)">Cancel</div>
+                                <div class="uni-modal__btn uni-modal__btn_primary" style="color: rgb(0, 122, 255)">OK</div>
+                            </div>
+                        </div>
+                    </uni-modal>
+                </uni-app>
+                <div style="position: absolute; left: 0px; top: 0px; width: 0px; height: 0px; z-index: -1; overflow: hidden; visibility: hidden">
+                    <div style="position: absolute; width: 100px; height: 200px; box-sizing: border-box; overflow: hidden; padding-bottom: env(safe-area-inset-top)">
+                        <div style="transition: all 0s ease 0s; animation: 0s ease 0s 1 normal none running none; width: 400px; height: 400px"></div>
+                    </div>
+                    <div style="position: absolute; width: 100px; height: 200px; box-sizing: border-box; overflow: hidden; padding-bottom: env(safe-area-inset-top)">
+                        <div style="transition: all 0s ease 0s; animation: 0s ease 0s 1 normal none running none; width: 250%; height: 250%"></div>
+                    </div>
+                    <div style="position: absolute; width: 100px; height: 200px; box-sizing: border-box; overflow: hidden; padding-bottom: env(safe-area-inset-left)">
+                        <div style="transition: all 0s ease 0s; animation: 0s ease 0s 1 normal none running none; width: 400px; height: 400px"></div>
+                    </div>
+                    <div style="position: absolute; width: 100px; height: 200px; box-sizing: border-box; overflow: hidden; padding-bottom: env(safe-area-inset-left)">
+                        <div style="transition: all 0s ease 0s; animation: 0s ease 0s 1 normal none running none; width: 250%; height: 250%"></div>
+                    </div>
+                    <div style="position: absolute; width: 100px; height: 200px; box-sizing: border-box; overflow: hidden; padding-bottom: env(safe-area-inset-right)">
+                        <div style="transition: all 0s ease 0s; animation: 0s ease 0s 1 normal none running none; width: 400px; height: 400px"></div>
+                    </div>
+                    <div style="position: absolute; width: 100px; height: 200px; box-sizing: border-box; overflow: hidden; padding-bottom: env(safe-area-inset-right)">
+                        <div style="transition: all 0s ease 0s; animation: 0s ease 0s 1 normal none running none; width: 250%; height: 250%"></div>
+                    </div>
+                    <div style="position: absolute; width: 100px; height: 200px; box-sizing: border-box; overflow: hidden; padding-bottom: env(safe-area-inset-bottom)">
+                        <div style="transition: all 0s ease 0s; animation: 0s ease 0s 1 normal none running none; width: 400px; height: 400px"></div>
+                    </div>
+                    <div style="position: absolute; width: 100px; height: 200px; box-sizing: border-box; overflow: hidden; padding-bottom: env(safe-area-inset-bottom)">
+                        <div style="transition: all 0s ease 0s; animation: 0s ease 0s 1 normal none running none; width: 250%; height: 250%"></div>
+                    </div>
+                </div>
+            </body>
+        </div>
+        <script type="text/javascript" src="lib/jquery-2.1.1.min.js"></script>
+        <script type="text/javascript" src="lib/layer_mobile/layer.js"></script>
+        <script type="text/javascript" src="javascripts/jquery.cookie.js"></script>
+        <script type="text/javascript" src="lib/jquery.localize.min.js"></script>
+        <script type="text/javascript" src="lib/language_cookie.js"></script>
+        <script type="text/javascript" src="javascripts/main.js"></script>
+        <script type="text/javascript" src="lib/vue.min.js"></script>
+        <script>
+            new Vue({
+                el: '#app',
+                data: {},
+                mounted() {},
+                methods: {
+                    participateClick() {
+                        window.location.href = 'hosted.html';
+                    },
+                },
+            });
+        </script>
+    </body>
+</html>

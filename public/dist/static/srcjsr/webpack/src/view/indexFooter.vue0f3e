@@ -1,0 +1,11 @@
+var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('footer',{class:_vm.skins == 'nights'?'footer':''},[_c('div',{staticClass:"footer-content"},[_c('div',{staticClass:"flex footer-top between"},[_c('div',{staticClass:"footer-header-left flex between"},_vm._l((_vm.footList),function(item){return _c('div',{key:item.id,on:{"click":function($event){_vm.goDetail(item.id)}}},[_vm._v(_vm._s(item.title))])})),_vm._v(" "),_vm._m(0)]),_vm._v(" "),_c('div',{staticClass:"flex footer-bottom between"},[_c('div',[_vm._v("© 2018-2020 KiBiEx All Rights Reserved")]),_vm._v(" "),_c('div',{staticClass:"flex footer-bottom-right"},[_c('p',{staticClass:"iconfont iconshijian"}),_vm._v(" "),_c('p',[_vm._v(_vm._s(_vm.years))]),_vm._v(" "),_c('p',[_vm._v(_vm._s(_vm.times))])])])])])}
+var staticRenderFns = [function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"footer-header-right flex between"},[_c('span',{staticClass:"iconfont iconinformatiom"}),_vm._v(" "),_c('span',{staticClass:"iconfont iconfabu"}),_vm._v(" "),_c('span',{staticClass:"iconfont iconfacebook"}),_vm._v(" "),_c('span',{staticClass:"iconfont icontwitter"}),_vm._v(" "),_c('span',{staticClass:"iconfont iconweibo"}),_vm._v(" "),_c('span',{staticClass:"iconfont icontubiaozhizuo"}),_vm._v(" "),_c('span',{staticClass:"iconfont iconqq"})])}]
+var esExports = { render: render, staticRenderFns: staticRenderFns }
+export default esExports
+
+
+//////////////////
+// WEBPACK FOOTER
+// ./node_modules/vue-loader/lib/template-compiler?{"id":"data-v-d25d625a","hasScoped":true,"transformToRequire":{"video":["src","poster"],"source":"src","img":"src","image":"xlink:href"},"buble":{"transforms":{}}}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./src/view/indexFooter.vue
+// module id = null
+// module chunks = 

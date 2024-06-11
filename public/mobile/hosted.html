@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"
+    />
+    <title>Mining by lock up</title>
+    <link rel="stylesheet" type="text/css" href="css/common.css" />
+    <link rel="stylesheet" type="text/css" href="fonts/iconfont.css" />
+    <link rel="stylesheet" type="text/css" href="font/iconfont.css" />
+    <link rel="stylesheet" type="text/css" href="css/footer.css" />
+    <link rel="stylesheet" type="text/css" href="css/mining.css" />
+    <link rel="stylesheet" type="text/css" href="css/hosted.css" />
+    <link rel="stylesheet" href="../layui/css/layui.css" media="all" />
+  </head>
+  <style>
+    body {
+      background: #f7f6fb;
+      background-size: cover;
+      color: #f2f5ff;
+    }
+  </style>
+
+  <body>
+    <div id="app">
+      <uni-app class="uni-app--maxwidth">
+        <uni-page>
+          <uni-page-head uni-page-head-type="default">
+            <div
+              class="uni-page-head"
+              style="
+                background-color: rgb(255, 255, 255);
+                width: 100%;
+                color: black;
+                transition-duration: 0ms;
+                transition-timing-function: linear;
+              "
+            >
+              <div class="uni-page-head-hd">
+                <div class="uni-page-head-btn">
+                  <i
+                    class="uni-btn-icon"
+                    style="color: black; font-size: 27px"
+                    @click="window.location = 'mining.html'"
+                    ></i
+                  >
+                </div>
+                <div class="uni-page-head-ft"></div>
+              </div>
+              <div class="uni-page-head-bd">
+                <div
+                  class="uni-page-head__title"
+                  style="font-size: 16px; opacity: 1"
+                  data-localize="mining.title"
+                >
+                  Mining by lock up
+                </div>
+              </div>
+              <div class="uni-page-head-ft"></div>
+            </div>
+            <div class="uni-placeholder"></div>
+          </uni-page-head>
+
+          <uni-page-wrapper>
+            <uni-page-body>
+              <uni-view>
+                <uni-view class="head">
+                  <uni-view class="ml20 pt30 pl10 pr10 pb30">
+                    <uni-view
+                      style="font-size: 1.1rem; line-height: 2rem"
+                      data-localize="mining.18"
+                      >Funds in custody</uni-view
+                    >
+                    <uni-view style="font-size: 1.8rem; font-weight: 700">
+                      {{census && census.tgzj}}
+                      <uni-text class="ml10" style="font-size: 1.3rem"
+                        ><span>USDT</span></uni-text
+                      >
+                    </uni-view>
+                  </uni-view>
+                  <uni-navigator
+                    class="pt5 pl10 pb5 pr10"
+                    style="
+                      font-size: 1rem;
+                      color: rgb(90, 138, 248);
+                      position: absolute;
+                      top: 40px;
+                      right: 10px;
+                      background-color: rgb(213, 231, 255);
+                      border-radius: 50px;
+                      width: 100px;
+                      text-align: center;
+                    "
+                    data-localize="mining.19"
+                    @click="orderClick"
+                    >Order</uni-navigator
+                  >
+                  <uni-view
+                    class="flex"
+                    style="
+                      color: rgb(255, 255, 255);
+                      background-color: rgba(255, 255, 255, 0.2);
+                    "
+                  >
+                    <uni-view class="flex1 headItem">
+                      <uni-view class="val">{{census && census.jrsy}}</uni-view>
+                      <uni-view data-localize="mining.20"
+                        >Expected earnings</uni-view
+                      >
+                    </uni-view>
+                    <uni-view class="flex1 headItem">
+                      <uni-view class="val">{{census && census.ljsy}}</uni-view>
+                      <uni-view data-localize="mining.21"
+                        >Cumulative income</uni-view
+                      >
+                    </uni-view>
+                    <uni-view class="flex1 headItem">
+                      <uni-view class="val">{{census && census.tgdd}}</uni-view>
+                      <uni-view data-localize="mining.22"
+                        >Orders in custody</uni-view
+                      >
+                    </uni-view>
+                  </uni-view>
+                </uni-view>
+                <uni-view class="mineCardList">
+                  <uni-view
+                    class="mineCard"
+                    v-for="item in card"
+                    :key="item.id"
+                  >
+                    <!-- 新增样式 -->
+                    <div class="mineCardItem">
+                      <div class="top">
+                        <img src="images/logo3.png" alt="" />
+                        <span>{{getLevel(item)}}</span>
+                        <button
+                          data-localize="mining.29"
+                          @click="hanlderDetailClick(item)"
+                        >
+                          Buy
+                        </button>
+                      </div>
+                      <div class="bottom">
+                        <div class="bottom-item">
+                          <p data-localize="personal.5">Minimum</p>
+                          <p>{{parseFloat(item.save_min).toFixed(2)}}</p>
+                        </div>
+                        <div class="bottom-item">
+                          <p data-localize="personal.18">
+                            Daily rate of return
+                          </p>
+                          <p>{{parseFloat(item.rate).toFixed(2)}}%</p>
+                        </div>
+                        <div class="bottom-item">
+                          <p data-localize="personal.19">Period</p>
+                          <p>
+                            {{item.day}}
+                            <span data-localize="mining.27">Day</span>
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- <uni-view class="topName">
+                                            <img src="images/logo2.png" alt="" />
+                                            <span class="span-text" style="font-size: 20px; display: flex; align-items: center">{{getLevel(item)}}</span>
+                                            <uni-view class="topNamePay ft18" data-localize="mining.23">USDT锁仓赚币</uni-view>
+                                        </uni-view>
+                                        <uni-view class="acbuyBtmL mt10 flex between" style="background: rgb(245, 245, 245); padding: 10px 15px; margin: 10px 15px 0px">
+                                            <uni-input style="background: transparent; width: 80%; max-width: 80%; color: rgb(0, 0, 0)">
+                                                <div class="uni-input-wrapper">
+                                                    <input @input="change($event,item)" :placeholder="getPlace(item)" maxlength="140" pattern="[0-9]*" autocomplete="off" type="number" class="uni-input-input" />
+                                                </div>
+                                            </uni-input>
+                                            <uni-text><span>USDT</span></uni-text>
+                                        </uni-view>
+                                        <uni-view class="acbuyBtmL mt5 flex between" style="margin: 10px 15px 0px"><uni-label class="uni-label-pointer" data-localize="mining.25">预计总收益</uni-label></uni-view>
+                                        <uni-view class="acbuyBtmL mt5 flex between" style="margin: 10px 15px 0px">
+                                            <uni-label class="uni-label-pointer" style="font-weight: bold">{{item.total || "0.00000000"}}</uni-label>
+                                            <uni-text><span>USDT</span></uni-text>
+                                        </uni-view> -->
+                    <!-- <uni-view class="bottomCard flex between alcenter">
+                                            <uni-view class="midType">
+                                                <uni-view class="price">
+                                                    {{parseFloat(item.rate).toFixed(2)}}%
+                                                    <uni-text><span>[USDT]</span></uni-text>
+                                                </uni-view>
+                                                <uni-view class="midTypetTitle mt5 gray9" data-localize="mining.26">
+                                                    近3日参考年化{日币利息}
+                                                </uni-view>
+                                            </uni-view>
+                                            <uni-view class="midDay">
+                                                <uni-view>
+                                                    {{item.day}}
+                                                    <uni-label class="uni-label-pointer" data-localize="mining.27">天</uni-label>
+                                                </uni-view>
+                                                <uni-text class="gray9"><span data-localize="mining.28">锁仓期限</span></uni-text>
+                                            </uni-view>
+                                        </uni-view> -->
+                    <!-- <uni-view class="minerBtn flex between alcenter"><uni-view @click="buyClick(item)" class="btn" data-localize="mining.29">购买</uni-view></uni-view> -->
+                  </uni-view>
+                </uni-view>
+                <uni-view class="buyMask" v-show="isBuy">
+                  <uni-view class="buyContent">
+                    <uni-view class="buyTitle" data-localize="mining.31"
+                      >USDTLock position to earn coins</uni-view
+                    >
+                    <uni-view class="buyBox">
+                      <uni-view class="buyItem">
+                        <uni-text
+                          ><span data-localize="mining.32"
+                            >Total Revenue</span
+                          ></uni-text
+                        >
+                        <uni-view class="h1"
+                          >{{detail && detail.rate || 0}} %</uni-view
+                        >
+                      </uni-view>
+                      <uni-view class="buyItem">
+                        <uni-text
+                          ><span data-localize="mining.33"
+                            >Amount of pledge</span
+                          ></uni-text
+                        >
+                        <uni-view class="h1"
+                          >{{detail && detail.num || 0}} USDT</uni-view
+                        >
+                      </uni-view>
+                      <uni-view class="buyItem">
+                        <uni-text
+                          ><span data-localize="mining.34"
+                            >Estimated Total Income</span
+                          ></uni-text
+                        >
+                        <uni-view class="h1"
+                          >{{detail && detail.income || 0}} USDT</uni-view
+                        >
+                      </uni-view>
+                      <uni-view class="buyItem">
+                        <uni-text
+                          ><span data-localize="mining.35"
+                            >Wallet Balance</span
+                          ></uni-text
+                        >
+                        <uni-view class="h1"
+                          >{{detail && detail.change_balance}}</uni-view
+                        >
+                      </uni-view>
+                      <uni-view
+                        class="buyBtn"
+                        style="
+                          margin-top: 0;
+                          position: absolute;
+                          width: 100%;
+                          bottom: 10px;
+                        "
+                      >
+                        <uni-button
+                          class="cencelBuy"
+                          data-localize="mining.36"
+                          @click="isBuy = false"
+                          >Cancel</uni-button
+                        >
+                        <uni-button
+                          class="sureBuy"
+                          data-localize="mining.29"
+                          @click="submit"
+                          >Buy</uni-button
+                        >
+                      </uni-view>
+                    </uni-view>
+                  </uni-view>
+                </uni-view>
+              </uni-view>
+            </uni-page-body>
+          </uni-page-wrapper>
+        </uni-page>
+        <uni-actionsheet>
+          <div
+            class="uni-mask uni-actionsheet__mask"
+            style="display: none"
+          ></div>
+          <div class="uni-actionsheet">
+            <div class="uni-actionsheet__menu">
+              <div style="max-height: 260px; overflow: hidden">
+                <div style="transform: translateY(0px) translateZ(0px)"></div>
+              </div>
+            </div>
+            <div class="uni-actionsheet__action">
+              <div class="uni-actionsheet__cell" style="color: rgb(0, 0, 0)">
+                取消
+              </div>
+            </div>
+            <div></div>
+          </div>
+        </uni-actionsheet>
+        <uni-modal style="display: none">
+          <div class="uni-mask"></div>
+          <div class="uni-modal">
+            <div class="uni-modal__bd"></div>
+            <div class="uni-modal__ft">
+              <div
+                class="uni-modal__btn uni-modal__btn_default"
+                style="color: rgb(0, 0, 0)"
+              >
+                Cancel
+              </div>
+              <div
+                class="uni-modal__btn uni-modal__btn_primary"
+                style="color: rgb(0, 122, 255)"
+              >
+                OK
+              </div>
+            </div>
+          </div>
+        </uni-modal>
+      </uni-app>
+    </div>
+  </body>
+</html>
+<script type="text/javascript" src="lib/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="lib/swiper.min.js"></script>
+<script type="text/javascript" src="javascripts/jquery.cookie.js"></script>
+<script type="text/javascript" src="lib/layer_mobile/layer.js"></script>
+<script type="text/javascript" src="lib/vue.min.js"></script>
+<script type="text/javascript" src="lib/jquery.localize.min.js"></script>
+<script type="text/javascript" src="lib/language_cookie.js"></script>
+<script type="text/javascript" src="javascripts/main.js"></script>
+<script type="text/javascript" src="javascripts/hosted.js"></script>

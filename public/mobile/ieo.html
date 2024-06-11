@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+        <title>Subscription</title>
+        <link rel="stylesheet" type="text/css" href="css/common.css" />
+        <link rel="stylesheet" type="text/css" href="fonts/iconfont.css" />
+        <link rel="stylesheet" type="text/css" href="css/footer.css" />
+        <link rel="stylesheet" type="text/css" href="css/mining.css" />
+        <link rel="stylesheet" type="text/css" href="css/ieo.css" />
+        <link rel="stylesheet" href="../layui/css/layui.css" media="all" />
+    </head>
+    <style>
+        body {
+            background: #0b1622;
+            background-size: cover;
+            color: #f2f5ff;
+        }
+        /* uni-view {
+            font-size: 12px;
+            line-height: 1.2;
+        } */
+    </style>
+    <body>
+        <div id="app">
+            <body class="uni-body pages-ieo-index">
+                <uni-app class="uni-app--maxwidth">
+                    <uni-page>
+                        <uni-page-head uni-page-head-type="default">
+                            <div class="uni-page-head" style="background-color: rgb(16, 32, 48); width: 100%; color: white; transition-duration: 0ms; transition-timing-function: linear">
+                                <div class="uni-page-head-hd">
+                                    <div class="uni-page-head-btn"><i class="uni-btn-icon" style="color: white; font-size: 27px" @click="window.history.go(-1)"></i></div>
+                                    <div class="uni-page-head-ft"></div>
+                                </div>
+                                <div class="uni-page-head-bd">
+                                    <div class="uni-page-head__title" style="font-size: 16px; opacity: 1" data-localize="ieo.1">
+                                        <!---->
+                                        Subscription
+                                    </div>
+                                </div>
+                                <!---->
+                                <div class="uni-page-head-ft"></div>
+                            </div>
+                            <div class="uni-placeholder"></div>
+                        </uni-page-head>
+                        <!---->
+                        <uni-page-wrapper>
+                            <uni-page-body>
+                                <uni-view class="blue">
+                                    <uni-navigator class="goMyBtn" @click="myIEO" data-localize="ieo.2">My subscription</uni-navigator>
+                                    <uni-view class="list-box">
+                                        <uni-view class="list" v-for="item in data" :key="item.id" @click="handerJumpClick(item)">
+                                            <uni-view class="list-img">
+                                                <uni-text style="background: rgb(240, 185, 11)"><span>{{getlg('ieo_status_'+item.status)}}</span></uni-text>
+                                                <uni-image>
+                                                    <div style="background-image: none; background-position: 0% 0%; background-size: 100% 100%; background-repeat: no-repeat"></div>
+                                                </uni-image>
+                                            </uni-view>
+                                            <uni-view class="list-content">
+                                                <uni-view class="list-title">
+                                                    <uni-view>{{item.title}}</uni-view>
+                                                    <uni-text><span>{{item.summary}}</span></uni-text>
+                                                </uni-view>
+                                                <uni-view class="list-btm">
+                                                    <article>
+                                                        <uni-text><span>{{getlg('ieo_3')}}</span></uni-text>
+                                                        <uni-label class="uni-label-pointer">{{iTofixed(item.amount,0)}}{{item.currency_name}}</uni-label>
+                                                    </article>
+                                                    <article>
+                                                        <uni-text class="mr10"><span data-localize="ieo.4">{{getlg('ieo_4')}}</span></uni-text>
+                                                        <uni-label class="uni-label-pointer">{{item.end_at}}</uni-label>
+                                                    </article>
+                                                </uni-view>
+                                            </uni-view>
+                                        </uni-view>
+                                    </uni-view>
+                                </uni-view>
+                            </uni-page-body>
+                        </uni-page-wrapper>
+                    </uni-page>
+                    <uni-actionsheet>
+                        <div class="uni-mask uni-actionsheet__mask" style="display: none"></div>
+                        <div class="uni-actionsheet">
+                            <div class="uni-actionsheet__menu">
+                                <!---->
+                                <!---->
+                                <div style="max-height: 260px; overflow: hidden"><div style="transform: translateY(0px) translateZ(0px)"></div></div>
+                            </div>
+                            <div class="uni-actionsheet__action"><div class="uni-actionsheet__cell" style="color: rgb(0, 0, 0)">取消</div></div>
+                            <div></div>
+                        </div>
+                        <!---->
+                    </uni-actionsheet>
+                    <uni-modal style="display: none">
+                        <div class="uni-mask"></div>
+                        <div class="uni-modal">
+                            <!---->
+                            <div class="uni-modal__bd"></div>
+                            <div class="uni-modal__ft">
+                                <div class="uni-modal__btn uni-modal__btn_default" style="color: rgb(0, 0, 0)">Cancel</div>
+                                <div class="uni-modal__btn uni-modal__btn_primary" style="color: rgb(0, 122, 255)">OK</div>
+                            </div>
+                        </div>
+                        <!---->
+                    </uni-modal>
+                    <!---->
+                </uni-app>
+            </body>
+        </div>
+    </body>
+</html>
+<script type="text/javascript" src="lib/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="lib/swiper.min.js"></script>
+<script type="text/javascript" src="javascripts/jquery.cookie.js"></script>
+<script type="text/javascript" src="lib/layer_mobile/layer.js"></script>
+<script type="text/javascript" src="lib/vue.min.js"></script>
+<script type="text/javascript" src="lib/jquery.localize.min.js"></script>
+<script type="text/javascript" src="lib/language_cookie.js"></script>
+<script type="text/javascript" src="javascripts/main.js"></script>
+<script>
+    var vm = new Vue({
+        el: '#app',
+        data() {
+            return {
+                data: [],
+            };
+        },
+        mounted() {
+            this.getData();
+        },
+        updated() {},
+        methods: {
+            myIEO() {
+                window.location.href = 'myIEO.html';
+            },
+            getData() {
+                var _ = this;
+                layer_loading();
+                initDataTokens(
+                    {
+                        url: 'project/lists',
+                        type: 'post',
+                    },
+                    function (res) {
+                        if (res.type != 'ok') return;
+                        _.data = res.message;
+                    }
+                );
+            },
+            handerJumpClick(item) {
+                window.location.href = 'ieo_detail.html?id=' + item.id;
+            },
+        },
+    });
+</script>

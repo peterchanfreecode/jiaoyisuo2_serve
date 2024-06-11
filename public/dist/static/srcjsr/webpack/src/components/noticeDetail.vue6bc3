@@ -1,0 +1,11 @@
+var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{class:_vm.skins=='days'?'noticeDetail':'noticeDetail balck'},[_c('div',{staticClass:"account-wrap"},[_c('div',{staticClass:"account-content"},[_c('div',{staticClass:"detailBig"},[_c('div',{staticClass:"clear"},[_c('span',[_vm._v(_vm._s(_vm.title))])]),_vm._v(" "),_c('div',{staticClass:"detailContent",domProps:{"innerHTML":_vm._s(_vm.content)}})])])])])}
+var staticRenderFns = []
+var esExports = { render: render, staticRenderFns: staticRenderFns }
+export default esExports
+
+
+//////////////////
+// WEBPACK FOOTER
+// ./node_modules/vue-loader/lib/template-compiler?{"id":"data-v-d49b7bf8","hasScoped":true,"transformToRequire":{"video":["src","poster"],"source":"src","img":"src","image":"xlink:href"},"buble":{"transforms":{}}}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./src/components/noticeDetail.vue
+// module id = null
+// module chunks = 

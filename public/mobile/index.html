@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+<!-- <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, viewport-fit=cover" /> -->
+<title>首页</title>
+<link rel="stylesheet" href="css/swiper.min.css" />
+<!-- <link rel="stylesheet" href="lib/swipers.css" /> -->
+<link rel="stylesheet" href="lib/bootstrap.min.css" />
+<link rel="stylesheet" href="lib/bootstrap-theme.min.css" />
+<link rel="stylesheet" href="fonts/iconfont.css">
+<link rel="stylesheet" href="css/common.css">
+<link rel="stylesheet" href="css/index.css" />
+<link rel="stylesheet" href="css/footer.css" />
+<link rel="stylesheet" href="css/index_banner.css" />
+<link rel="stylesheet" href="css/swiper.min.css">
+<script src="js/swiper.min.js"></script>
+<style>
+    .kf {
+        position: absolute;
+        right: 10px;
+        top: 0;
+        width: 50px;
+        height: 50px;
+        -webkit-border-radius: 200px;
+        border-radius: 200px;
+        z-index: 99;
+        text-align: center;
+    }
+    .kf img{
+        height: 30px;
+    }
+</style>
+</head>
+<body>
+    <div id="app">
+        <div id="home">
+            <!-- 头部 -->
+            <div class="header bgColor " style="position: fixed;">
+                <div class="top-logo">
+                    <img src="images/logo3.png">
+                </div>
+                <div class="kf"><a href="http://3.34.63.81:8081/chatIndex?kefu_id=panda&ent_id=5&lang=en"><img src="images/kf.png" alt=""></a></div>
+            </div>
+            <!-- <div class="header-space"></div> -->
+            <!--<div id="iSlider-effect-wrapper">-->
+            <!--	<div id="animation-effect" class="iSlider-effect"></div>-->
+            <!--</div>-->
+            <div id="certify" class="swipers">
+                <div class="swiper-container" style="margin-top: 40px;">
+                <div class="swiper-wrapper">
+                
+                </div>
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+            <!--<div class="news">-->
+            <!--	<img src="images/newse.png" />-->
+            <!--	<ul class="demos ft12" style="margin-bottom: 0;">-->
+            <!--		<li class="news-item"></li>-->
+            <!--	</ul>-->
+            <!--</div>-->
+            <div class="news-two ">
+                <div class="new-two-box">
+                <div class="new-two-left" style="width: 25px;
+                height: 25px;">
+                <img src="images/kby.webp">
+                </div>
+                <div class="new-two-right">
+                    <div class="new-two-list">
+                        <marquee data-v-31b2546e="" direction="left" scrolldelay="100" scrollamount="2" loop="loop" behavior="scroll" hspace="10" height="30" class="marquee">
+                           <div class="new-two-list-box"></div>
+                        </marquee>
+                    </div>
+                </div>
+                </div>
+            </div>
+            <div class="trade swiper-container ">
+                <ul class="swiper-wrapper trade_list ">
+                </ul>
+                <!-- <div class="swiper-pagination"></div> -->
+            </div>
+            <div class="features-box">
+
+                <div  class="features-left " onclick='window.location.href="chongbi.html"'>
+                    <div class="features-left-txt">
+                        <span  data-localize="index.quickdeposit">Quick deposit</span>
+                        <em data-localize="index.supportCurreny">Support BTC, USDT, ETH, etc.</em>
+                    </div>
+                    <div class="features-left-right">
+                        <img src="images/xz.webp">
+                    </div>
+                </div>
+
+                <div class="features-right ">
+                    <!-- <a href="trades.html"><div class="features-right-top"> -->
+                    <a href="changeLang.html"><div class="features-right-top">
+                        <img src="images/language.webp" style="width: 25px;
+                        height: 25px;">
+                        <span data-localize="index.Contracttransaction">Language</span>
+                        </a>
+                    </div>
+                    <a href="about.html">
+                    <div class="features-right-top" style="margin-bottom:0">
+                        <img src="images/17.webp" style="width: 25px;
+                        height: 25px;">
+                        <span  data-localize="index.helpcenter">Help center</span>
+                    </div>
+                    </a>
+                </div>
+            </div>
+            <!-- 新币认购 -->
+            <div class="centerbox">
+                <div class="center-banner">
+                    <a href="ieo.html"> 
+                        <img class="img1" src="images/news/xbsg.png">
+                    </a>
+                </div>
+            </div>
+            <!-- 锁仓挖矿，质押生息 -->
+            <div class="centerbox" >
+                <div class="center-banner" >
+                    <a href="mining.html"> 
+                        <img class="img2" src="images/news/index_banner_u.png">
+                    </a>
+                </div>
+            </div>
+            <div class="fiatde" style="margin-bottom: 0">
+                <div class="deals hide">
+                    <a href="fiatrad.html" class="flex between">
+                        <div class="fl-left">
+                            <b>资产交易</b> <span>多种资产交易，多种支付方式</span>
+                        </div> <!-- <img src="images/fa.jpg" /> -->
+                    </a>
+                </div>
+            </div>
+            <div class="highlists mt10">
+                <ul class="nav nav-tabs" >
+                    <li   class="nav-active" data-type="0">
+                        <a style="font-weight: bold;" data-localize="index.increase">Top Gainers</a></li>
+                        <li data-type="1"><a href="#turnover"
+                        style="font-weight: bold;" data-localize="index.turnover">Turnover list</a></li>
+                </ul>
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane fade in active">
+                        <ul class="flex ft12 between performer-classify performer-classifyone">
+                            <li data-localize="index.name">Name</li>
+                            <li class="tc" data-localize="index.lastPrice">Last Price</li>
+                            <li class="tr" data-localize="index.change">Change</li>
+                        </ul>
+                        <ul class="flex ft12 between performer-classify performer-classifytwo" style="display:none">
+                            <li data-localize="index.name">Name</li>
+                            <li class="tc" data-localize="index.lastPrice">Last Price</li>
+                            <li class="tr" data-localize="index.24hturnover">24H turnover</li>
+                        </ul>
+                        <ul id="performer" style="margin-bottom: 50px;">
+                        </ul>
+                        <ul id="turnover" style="display:none;margin-bottom: 50px;">
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 上滑进入 -->
+        <!-- <transition name="van-fade">
+            <div v-show="visible">Fade</div>
+          </transition> -->
+            <footer class="transition-box">
+                <!-- 上滑进入 -->
+                    <a href="index.html" class="select">
+                        <div>
+                            <p class="img img0"></p>
+                            <span data-localize="footer.home">Home</span>
+                        </div>
+                    </a>
+                    
+                    <a href="trades.html">
+                        <div>
+                            <p class="img img1"></p>
+                            <span data-localize="footer.quotation">Markets</span>
+                        </div>
+                    </a>
+                    <a href="dataMap.html?tradeId=2&legal_id=3&currency_id=1&symbol=BTC/USDT">
+                        <div>
+                            <p class="img img2"></p>
+                            <span data-localize="footer.transaction">Transaction</span>
+                        </div>
+                    </a>
+                    <a href="assets.html">
+                        <div>
+                            <p class="img img3"></p>
+                            <span data-localize="footer.assets">Balances</span>
+                        </div>
+                    </a>
+                    <a href="personal.html"  >
+                        <div>
+                            <p class="img img4"></p>
+                            <span data-localize="footer.personal">My</span>
+                        </div>
+                    </a>
+            </footer>
+        </div>
+    </div>
+	
+	<script type="text/javascript" src="lib/jquery-2.1.1.min.js"></script>
+	<script type="text/javascript" src="javascripts/iSliders.js"></script>
+	<script type="text/javascript" src="javascripts/islider_desktop.js"></script>
+	<script type="text/javascript" src="lib/bootstrap.min.js"></script>
+	<script type="text/javascript"
+		src="lib/jquery.bootstrap.newsbox.min.js"></script>
+	<script type="text/javascript" src="javascripts/swiper.min.js"></script>
+	<script type="text/javascript" src="javascripts/jquery.cookie.js"></script>
+	<script type="text/javascript" src="lib/layer_mobile/layer.js"></script>
+	<script type="text/javascript" src="lib/jquery.localize.min.js"></script>
+	<script type="text/javascript" src="lib/language_cookie.js"></script>
+	<script type="text/javascript" src="javascripts/main.js"></script>
+
+   
+    
+    <!-- 引入 Vue 和 Vant 的 JS 文件 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6/dist/vue.min.js"></script>
+    
+    <!-- <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    /> -->
+    <script>
+        new Vue({
+          el: '#app',
+          data: function() {
+            return { 
+                visible: sessionStorage.getItem('visible') || false,
+             }
+          },
+          create: function () {
+          },
+          mounted() {
+                // setTimeout(()=>{
+                //     if(!this.visible){
+                //         const element = document.querySelector('.swipers');
+                //         element.classList.add('animate__animated', 'animate__fadeInDown');
+                //     }
+                // },0)
+                // 公告
+                // setTimeout(()=>{
+                //     if(!this.visible){
+                //         const element = document.querySelector('.news-two');
+                //         element.classList.add('animate__animated', 'animate__bounceInDown');
+                //     }
+                // },0)
+                // // 锁仓挖矿
+                // setTimeout(()=>{
+                //     if(!this.visible){
+                //         const element = document.querySelector('.centerbox');
+                //         element.classList.add('animate__animated', 'animate__bounceInLeft');
+                //     }
+                // },0)
+                // // 行情滑动
+                // setTimeout(()=>{
+                //     if(!this.visible){
+                //         const element = document.querySelector('.trade_list');
+                //         element.classList.add('animate__animated', 'animate__bounceInRight');
+                //     }
+                // },0)
+                
+                // setTimeout(()=>{
+                //     if(!this.visible){
+                //         const element = document.querySelector('.features-left');
+                //         element.classList.add('animate__animated', 'animate__heartBeat');
+                //     }
+                // },1000)
+
+                // setTimeout(()=>{
+                //     this.visible = true
+                //     sessionStorage.setItem('visible', true)
+                // },1000)
+                
+                // element.classList.add('animate__animated', 'animate__bounceInRight');
+               
+                
+          }
+        })
+    </script>
+	<script>
+	    if(!getLocal('langstatus')){
+	        setLocal('langstatus','1');
+        	setLocal('language', 'en');
+            location.reload();
+            setLang('en')    
+	    }
+	    if (getLocal('language') !== 'zh' && getLocal('language') !== 'hk') {
+            // 新币申购和质押生息图片切换
+            $('.centerbox .img1').attr('src', 'images/news/xbsg_en.png');
+            $('.centerbox .img2').attr('src', 'images/news/index_banner_u_en.png');
+        } 
+        if (getLocal('language') && getLocal('language') == 'en') {
+            $('.langs .logos').attr('src', 'images/en.png');
+        } else if(getLocal('language') && getLocal('language') == 'hk'){
+            $('.langs .logos').attr('src', 'images/hk.png');
+        }else{
+        	$('.langs .logos').attr('src', 'images/cn.png');
+        }
+        var picList = [];
+
+        $(".demos").bootstrapNews({
+            newsPerPage: 1,
+            autoplay: true,
+            pauseOnHover: true,
+            navigation: false,
+            direction: 'down',
+            newsTickerInterval: 2500,
+            onToDo: function () {}
+        });
+    </script>
+	<script type="text/javascript">
+        //===============公告列表======================
+        $.ajax({
+            type: 'post',
+            url: _API + 'news/list',
+            dataType: 'json',
+            data: {
+                c_id: 4
+            },
+            success: function (data) {
+                var html = '';
+                var title;
+                for (i = 0; i < data.message.list.length; i++) {
+
+                    html += "<li class='news-item'><a href='journalism.html?id=" + data.message.list[i].id +
+                        "'>" + data.message.list[i].title + "</a></li>";
+                };
+                // $('.demos').html(html);
+                $('.new-two-list-box').html(html);
+            }
+        });
+        //======================新闻列表======================
+        $.ajax({
+            type: 'post',
+            url: _API + 'news/list',
+            dataType: 'json',
+            data: {
+                c_id: 5
+            },
+            success: function (data) {
+                var ban = data.message.list
+                var html = '';
+                //var title;
+                for (i = 0; i < ban.length; i++) {
+                    var ner = ban[i];
+                    var obj = {
+                        content: '<div class="banlide swiper-slide"><a href="javascript:;"><img src="' +
+                            ner.thumbnail + '"/></a></div>'
+                        
+                    }
+                    html+='<div class="banlide swiper-slide"><a href="javascript:;"><img src="' +
+                            ner.thumbnail + '"/></a></div>'
+                    picList.push(obj);
+
+                };
+                $('#certify .swiper-wrapper').html(html);
+                init();
+            }
+        });
+
+        function init() {
+            setTimeout(function(){
+              runbanner();  
+            },)
+            setTimeout(function () {
+                var islider1 = new iSlider({
+                    data: picList,
+                    dom: document.getElementById("animation-effect"),
+                    duration: 3000,
+                    isAutoplay: true,
+                    isLooping: true,
+                });
+                // islider1.bindMouse();
+            }, 0);
+        }
+        var cny = 6.9641;
+        //===========我的资产==============   
+        var token = get_user();
+        var legalcny, legalusdt, dealcny, dealusdt, tradecny;
+        $('.onc').click(function () {
+            layer_msg(getlg('noOpen'))
+        })
+
+        function compare(prop) {
+            return function (obj1, obj2) {
+                var val1 = obj1[prop] - 0;
+                var val2 = obj2[prop] - 0;
+                if (val1 < val2) {
+                    return 1;
+                } else if (val1 > val2) {
+                    return -1;
+                } else {
+                    return 0;
+                }
+            }
+        }
+        $(function () {
+            intervalData(true);
+            setInterval(function () {
+                intervalData(false)
+            }, 6000)
+            
+        	$(".nav-tabs li").click(function(){
+        	    $(".nav-tabs li").removeClass('nav-active');
+        	    $(this).addClass('nav-active');
+        	    if($(this).attr('data-type')==1){
+        	        $("#performer").hide();
+        	        $("#turnover").show();
+        	        $(".performer-classifytwo").show();
+        	        $(".performer-classifyone").hide();
+        	    }else{
+        	        $("#performer").show();
+        	        $("#turnover").hide();
+        	        $(".performer-classifyone").show();
+        	        $(".performer-classifytwo").hide();
+        	    }
+        	})
+            function intervalData(isFisrt) {
+                $.ajax({
+                    url: _API + 'currency/quotation_new',
+                    type: 'get',
+                    dataType: 'json',
+                    beforeSend: function beforeSend(request) {
+                        request.setRequestHeader("Authorization", token);
+                    },
+                    success: function (res) {
+                        if (res.type == 'ok') {
+                            var data = res.message;
+                            var html = ''
+                            var usdtData = data.find((item) => item.name == 'USDT').quotation;
+                            for (var i in usdtData) {
+                                if (usdtData[i].is_display == 1) {
+                                    html +=
+                                        `<li class="swiper-slide" id="swiper-slide">
+                                        <a href="dataMap.html?tradeId=2&legal_id=${usdtData[i].legal_id}&currency_id=${usdtData[i].currency_id}&symbol=${usdtData[i].currency_name}/USDT">
+                                        <small class="usdt"><b style="font-size:14px;color:#333;font-weight: 600;">${usdtData[i].currency_name}</b><span style="font-size: 11px;color: #777;font-weight: 600;">USDT</span></small>
+                                        <h4 style="font-weight: 600;color:${usdtData[i].change<0?'#ff3e60':'#00c087'}">${iTofixed(usdtData[i].now_price,4) || '0.00'}<span style="font-weight: 600;">${iTofixed(usdtData[i].change,2) || '0.00'}%</span></h4>
+                                        
+                                    </li>`
+                                }
+
+                            }
+                            $('.trade_list').html(html)
+                            var swiper = new Swiper('.trade', {
+                                slidesPerView: 3,
+                                spaceBetween: 30,
+                                // pagination: {
+                                //     el: '.swiper-pagination',
+                                //     clickable: true,
+                                // },
+                            });
+                            var phHtml = ''
+                            var phHtmltwo='';
+                            var phData = [];
+                            var phDataTwo = [];
+                            for (var i = 0; i < data.length; i++) {
+                                var quotation = data[i].quotation;
+                                for (var j = 0; j < quotation.length; j++) {
+                                    var item = quotation[j];
+                                    item['legal_name'] = data[i].name;
+                                    // item['cny_price']=data[i].cny_price;
+                                    phData.push(item);
+                                    phDataTwo.push(item);
+                                }
+                            }
+                            data.find((item) => item.name == 'USDT').quotation;
+                            phData = phData.filter((item) => item.change != null)
+                            phData = phData.sort(compare('change'))
+                            phDataTwo = phDataTwo.sort(compare('volume'));
+                            let num = 0;
+                            let numtwo=0;
+                            for (var i in phDataTwo) {
+                                if (phDataTwo[i].is_display == 1) {
+                                    numtwo++;
+                                    if (numtwo >= 10) {
+                                        break;
+                                    }
+                                    // <small>${(num-0)}.</small>
+                                 phHtmltwo +=
+                            		`
+                            		<li><a href="dataMap.html?tradeId=2&legal_id=${phDataTwo[i].legal_id}&currency_id=${phDataTwo[i].currency_id}&symbol=${phDataTwo[i].currency_name}/${phDataTwo[i].legal_name}">
+                            
+                            		<b>${phDataTwo[i].currency_name}<span>/${phDataTwo[i].legal_name}</span></b>
+                            		<b class="tc" style="color:${(phDataTwo[i].change - 0) >= 0 ? '#00c087' : 'rgb(103, 200, 172)'}">${iTofixed(phDataTwo[i].now_price*1,2) || '0.00'}</b>
+                            		<button class="btn animate__bounce btn-default" style="background:#00abff;">${(localStorage.getItem('language')=='zh')?(iTofixed(phDataTwo[i].volume/10000,2)+'万'):((localStorage.getItem('language')=='hk')?(iTofixed(phDataTwo[i].volume/10000,2)+'万'):(iTofixed(phDataTwo[i].volume/1000000,2)+'M'))}</button>
+                            		</a>
+                            		</li>
+                            		`
+                                }
+                            }
+                            for (var i in phData) {
+                                if (phData[i].is_display == 1) {
+                                    num++;
+                                    if (num >= 10) {
+                                        break;
+                                    }
+                                    // <small>${(num-0)}.</small>
+                                 
+                                 phHtml +=
+                                        `
+                                    <li><a href="dataMap.html?tradeId=2&legal_id=${phData[i].legal_id}&currency_id=${phData[i].currency_id}&symbol=${phData[i].currency_name}/${phData[i].legal_name}">
+                                       
+                                        <b>${phData[i].currency_name}<span>/${phData[i].legal_name}</span></b>
+                                        <b class="tc" style="color:${(phData[i].change - 0) >= 0 ? '#00c087' : 'rgb(103, 200, 172)'}">${iTofixed(phData[i].now_price * 1,4) || '0.00'}</b>
+                                        <button class="btn btn-default" style="background:${(phData[i].change - 0) >= 0 ? '#00c087' : '#ff3e60'}">${iTofixed(phData[i].change,2) || '0.00'}%</button>
+                                        </a>
+                                    </li>
+                                `
+                                }
+                            }
+                            $('#performer').html(phHtml)
+                            $('#turnover').html(phHtmltwo)
+                        }
+                    }
+                })
+
+            }
+        })
+
+        // function showLeft() {
+        //     var token = get_user_login();
+        //     sliderLeft(token);
+        // }
+        var token = get_user();
+        if (token != 0) {
+            initDataTokens({
+                url: 'user/info'
+            }, function (res) {
+                if (res.type == 'ok') {
+                    $('.right span').text(res.message.account);
+                    $('.right').attr('href', 'personal.html');
+                    $('.right img').removeClass('hide');
+                }
+
+            })
+        }
+        $('.langs').click(function () {
+            $('.lang-list').toggle();
+        })
+        $('.lang-list li').click(function () {
+            $('.langs .logos').attr('src', $(this).find('.logos').attr('src'));
+            $('.langs span').text($(this).find('span').text());
+            $('.lang-list').hide();
+            var texts = $(this).attr('data-type');
+            setLocal('language', texts);
+            location.reload();
+            setLang(texts)
+        })
+        function runbanner(){
+             new Swiper('#certify .swiper-container', {
+            	watchSlidesProgress: true,
+            	slidesPerView: 'auto',
+            	centeredSlides: true,
+            	loop: true,
+            	loopedSlides: 5,
+            	autoplay: true,
+            	navigation: {
+            		nextEl: '.swiper-button-next',
+            		prevEl: '.swiper-button-prev',
+            	},
+            	pagination: {
+            		el: '.swiper-pagination',
+            		//clickable :true,
+            	},
+            	on: {
+            		progress: function(progress) {
+            			for (i = 0; i < this.slides.length; i++) {
+            				var slide = this.slides.eq(i);
+            				var slideProgress = this.slides[i].progress;
+            				modify = 1;
+            				if (Math.abs(slideProgress) > 1) {
+            					modify = (Math.abs(slideProgress) - 1) * 0.3 + 1;
+            				}
+            				translate = slideProgress * modify * 260 + 'px';
+            				scale = 1 - Math.abs(slideProgress) / 5;
+            				zIndex = 999 - Math.abs(Math.round(10 * slideProgress));
+            				slide.transform('translateX(' + translate + ') scale(' + scale + ')');
+            				slide.css('zIndex', zIndex);
+            				slide.css('opacity', 1);
+            				if (Math.abs(slideProgress) > 3) {
+            					slide.css('opacity', 0);
+            				}
+            			}
+            		},
+            		setTransition: function(transition) {
+            			for (var i = 0; i < this.slides.length; i++) {
+            				var slide = this.slides.eq(i)
+            				slide.transition(transition);
+            			}
+            
+            		}
+            	}
+            
+            })
+        }
+    </script>
+</body>
+</html>

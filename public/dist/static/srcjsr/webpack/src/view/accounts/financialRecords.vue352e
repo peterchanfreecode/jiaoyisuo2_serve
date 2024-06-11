@@ -1,0 +1,11 @@
+var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{class:_vm.skins=='days'?'record':'record balck'},[_c('div',{staticClass:"content"},[_c('div',{staticClass:"header"},[_c('h1',[_vm._v(_vm._s(_vm.$t('miscro.recordWithdrawal')))])]),_vm._v(" "),_c('ul',{staticClass:"list"},[_c('li',{staticClass:"flex between"},[_c('p',[_vm._v(_vm._s(_vm.$t('td.num')))]),_vm._v(" "),_c('p',{staticClass:"tc"},[_vm._v(_vm._s(_vm.$t('asset.record')))]),_vm._v(" "),_c('p',{staticClass:"tr"},[_vm._v(_vm._s(_vm.$t('td.time')))])]),_vm._v(" "),_vm._l((_vm.list),function(item,index){return _c('li',{directives:[{name:"show",rawName:"v-show",value:(index < 5),expression:"index < 5"}],key:item.id,staticClass:"flex between"},[_c('p',[_vm._v(_vm._s(item.value))]),_vm._v(" "),_c('p',{staticClass:"tc"},[_vm._v(_vm._s(item.info))]),_vm._v(" "),_c('p',{staticClass:"tr"},[_vm._v(_vm._s(item.created_time))])])})],2)])])}
+var staticRenderFns = []
+var esExports = { render: render, staticRenderFns: staticRenderFns }
+export default esExports
+
+
+//////////////////
+// WEBPACK FOOTER
+// ./node_modules/vue-loader/lib/template-compiler?{"id":"data-v-4e83878e","hasScoped":true,"transformToRequire":{"video":["src","poster"],"source":"src","img":"src","image":"xlink:href"},"buble":{"transforms":{}}}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./src/view/accounts/financialRecords.vue
+// module id = null
+// module chunks = 
