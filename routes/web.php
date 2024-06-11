@@ -378,7 +378,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['admin_auth']], function () 
 
     //秒合约秒数设置
     Route::get('/micro_seconds_index', function () {
-        return view('admin.micro.seconds_index');
+        return view('admin.micro.seconds_index2', ['type' => request()->input('type', 1)]);
     });
     Route::get('micro_seconds_add', 'Admin\MicroController@secondsAdd');//添加设置
     Route::post('micro_seconds_add', 'Admin\MicroController@secondsPostAdd');//添加设置

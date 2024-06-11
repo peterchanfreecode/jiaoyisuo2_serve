@@ -64,7 +64,8 @@
             form.on('submit(demo1)', function(data){
                 var data = data.field;
                 $.ajax({
-                    url:'{{url('admin/micro_seconds_add')}}'
+                    // url:'{{url('admin/micro_seconds_add')}}'
+                    url: "/admin/micro_seconds_add?type={{$type}}"
                     ,type:'post'
                     ,dataType:'json'
                     ,data : data

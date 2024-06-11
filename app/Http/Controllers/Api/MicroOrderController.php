@@ -21,6 +21,7 @@ use App\Models\MarketHour;
 use App\Models\CurrencyMatch;
 use App\Models\InsuranceType;
 use App\Service\MicroService;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redis;
 
 class MicroOrderController extends Controller
@@ -68,7 +69,8 @@ class MicroOrderController extends Controller
      */
     public function getSeconds()
     {
-        $seconds = MicroSecond::where('status', 1)->get();
+        $panType = DB::table('settings')->where('key', 'pan_type')->value('value');;
+        $seconds = MicroSecond::where('status', 1)->where('type', $panType)->get();
         /*    $user_id = Users::getUserId();
             if ($seconds) {
                 foreach ($seconds as &$v) {

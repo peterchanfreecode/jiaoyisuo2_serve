@@ -25,6 +25,7 @@
                     <li hidden>工作室</li>
                     <li hidden>通证规则</li>
                     <li>秒合约</li>
+                    <li>修改盘口</li>
                 </ul>
                 <div class="layui-tab-content">
                     <!--通知设置开始-->
@@ -701,7 +702,9 @@
                             <label class="layui-form-label">风控参数</label>
                             <div class="layui-input-block">
                                 <div class="layui-inline btn-group layui-btn-group">
-                                    <button class="layui-btn layui-btn-primary cateManage" type="button" id="add_seconds"><i class="layui-icon layui-icon-log"></i>秒数设置</button>
+                                    <button class="layui-btn layui-btn-primary cateManage" type="button" id="add_seconds"><i class="layui-icon layui-icon-log"></i>A盘秒数设置</button>
+                                    <button class="layui-btn layui-btn-primary cateManage" type="button" id="add_seconds_b"><i class="layui-icon layui-icon-log"></i>B盘秒数设置</button>
+                                    <button class="layui-btn layui-btn-primary cateManage" type="button" id="add_seconds_c"><i class="layui-icon layui-icon-log"></i>C盘秒数设置</button>
                                     <button class="layui-btn layui-btn-primary" type="button" id="add_number"><i class="layui-icon layui-icon-about"></i>数量设置</button>
                                     <button class="layui-btn layui-btn-primary" type="button" id="user"> <i class="layui-icon layui-icon-username"></i> 用户管理</button>
                                     <button class="layui-btn layui-btn-primary" type="button" id="currency_risk"> <i class="layui-icon layui-icon-dollar"></i>币种风控</button>
@@ -784,6 +787,18 @@
                             </div>
                         </div>
                     </div>
+                    <div class="layui-tab-item">
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">盘口</label>
+                            <div class="layui-input-block">
+                                <div class="layui-input-inline">
+                                    <input type="radio" name="pan_type" value="1" title="A盘" @if (isset($setting['pan_type'])) {{$setting['pan_type'] == 1 ? 'checked' : ''}} @endif >
+                                    <input type="radio" name="pan_type" value="2" title="B盘" @if (isset($setting['pan_type'])) {{$setting['pan_type'] == 2 ? 'checked' : ''}} @else checked @endif >
+                                    <input type="radio" name="pan_type" value="3" title="C盘" @if (isset($setting['pan_type'])) {{$setting['pan_type'] == 3 ? 'checked' : ''}} @else checked @endif >
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -817,8 +832,24 @@
             $('#add_seconds').click(function() {
                 parent.winui.window.open({
                     type: 2
-                    ,title: '秒数设置'
+                    ,title: 'A盘秒数设置'
                     ,content: '/admin/micro_seconds_index'
+                    ,id: 100
+                });
+            });
+            $('#add_seconds_b').click(function() {
+                parent.winui.window.open({
+                    type: 2
+                    ,title: 'B盘秒数设置'
+                    ,content: '/admin/micro_seconds_index?type=2'
+                    ,id: 100
+                });
+            });
+            $('#add_seconds_c').click(function() {
+                parent.winui.window.open({
+                    type: 2
+                    ,title: 'C盘秒数设置'
+                    ,content: '/admin/micro_seconds_index?type=3'
                     ,id: 100
                 });
             });

@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\MicroNumber;
 use App\Models\MicroOrder;
 use App\Models\MicroSecond;
+use App\Models\MicroSecondB;
 use App\Models\Currency;
 use App\Models\CurrencyMatch;
 class MicroController extends Controller
@@ -92,12 +93,24 @@ class MicroController extends Controller
     public function secondsAdd(Request $request)
     {
         $id = $request->get('id', 0);
+        $type = $request->get('type', 1);
         if (empty($id)) {
             $result = new MicroSecond();
         } else {
             $result = MicroSecond::find($id);
         }
-        return view('admin.micro.seconds_add')->with('result', $result);
+        return view('admin.micro.seconds_add')->with('result', $result)->with('type', $type);
+    }
+
+    public function secondsAddB(Request $request)
+    {
+        $id = $request->get('id', 0);
+        if (empty($id)) {
+            $result = new MicroSecondB();
+        } else {
+            $result = MicroSecondB::find($id);
+        }
+        return view('admin.micro.seconds_add_b')->with('result', $result);
     }
 
     public function secondsPostAdd(Request $request)
@@ -108,10 +121,44 @@ class MicroController extends Controller
         $profit_ratio = $request->get('profit_ratio', '');
         $lose_ratio = $request->get('lose_ratio', '');
         $micro_min = $request->get('micro_min', 0);
+        $type = $request->get('type', 1);
         if (empty($id)) {
             $result = new MicroSecond();
         } else {
             $result = MicroSecond::find($id);
+            if ($result == null) {
+                return redirect()->back();
+            }
+        }
+        $result->seconds = $seconds;
+        $result->profit_ratio = $profit_ratio;
+        $result->lose_ratio = $lose_ratio;
+        $result->status = $status;
+        $result->micro_min = $micro_min;
+        $result->type = $type;
+        DB::beginTransaction();
+        try {
+            $result->save(); //保存币种
+            DB::commit();
+            return $this->success('操作成功');
+        } catch (\Exception $exception) {
+            DB::rollBack();
+            return $this->error($exception->getMessage());
+        }
+    }
+
+    public function secondsPostAddB(Request $request)
+    {
+        $id = $request->get('id', 0);
+        $seconds = $request->get('seconds', '');
+        $status = $request->get('status', 0);
+        $profit_ratio = $request->get('profit_ratio', '');
+        $lose_ratio = $request->get('lose_ratio', '');
+        $micro_min = $request->get('micro_min', 0);
+        if (empty($id)) {
+            $result = new MicroSecondB();
+        } else {
+            $result = MicroSecondB::find($id);
             if ($result == null) {
                 return redirect()->back();
             }
@@ -135,7 +182,16 @@ class MicroController extends Controller
     public function secondsLists(Request $request)
     {
         $limit = $request->get('limit', 10);
+        $type = $request->get('type', 1);
         $result = new MicroSecond();
+        $result = $result->where('type', $type)->orderBy('id', 'desc')->paginate($limit);
+        return $this->layuiData($result);
+    }
+
+    public function secondsListsB(Request $request)
+    {
+        $limit = $request->get('limit', 10);
+        $result = new MicroSecondB();
         $result = $result->orderBy('id', 'desc')->paginate($limit);
         return $this->layuiData($result);
     }
