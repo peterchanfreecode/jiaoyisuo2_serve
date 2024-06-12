@@ -125,6 +125,32 @@ class UserController extends Controller
         return view('admin.user.edit', ['result' => $result, 'res' => $res]);
     }
 
+    //修改盘口
+    public function changepan(Request $request)
+    {
+        $id = $request->get('id', 0);
+        if (empty($id)) {
+            return $this->error("参数错误");
+        }
+        $result = DB::table('users')->find($id);
+        return view('admin.user.changepan', ['result' => $result]);
+    }
+
+    public function dochangepan(Request $request)
+    {
+        $id = $request->post('id', 0);
+        $pan_type = $request->post('pan_type', 0);
+        if (empty($id || empty($pan_type))) {
+            return $this->error("参数错误");
+        }
+        $r = DB::table('users')->where('id', $id)->update(['pan_type' => $pan_type]);
+        if ($r) {
+            return $this->success('编辑成功');
+        }else{
+            return $this->error('编辑失败');
+        }
+    }
+
     //编辑用户信息
     public function doedit()
     {

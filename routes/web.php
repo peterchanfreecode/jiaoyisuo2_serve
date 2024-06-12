@@ -238,6 +238,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['admin_auth']], function () 
     Route::post('user/update_pass', 'Admin\UserController@update_pass');
     Route::post('user/update_pay_pass', 'Admin\UserController@update_pay_pass');
     Route::get('user/edit', 'Admin\UserController@edit');
+    Route::get('user/changepan', 'Admin\UserController@changepan');
+    Route::post('user/dochangepan', 'Admin\UserController@dochangepan');
     Route::post('user/edit', 'Admin\UserController@doedit');
     Route::post('user/real_user', 'Admin\UserController@real_user');
     Route::post('user/gold', 'Admin\UserController@gold');

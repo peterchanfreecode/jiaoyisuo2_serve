@@ -74,6 +74,7 @@
         <a class="layui-btn layui-btn-warm layui-btn-xs" lay-event="bind_email">邮箱绑定邀请人</a>
         <a class="layui-btn layui-btn-warm layui-btn-xs" lay-event="auth">手动实名</a>
         <a class="layui-btn layui-btn-warm layui-btn-xs" lay-event="atelier">VIP</a>
+        <a class="layui-btn layui-btn-xs" lay-event="changepan">修改盘口</a>
     </script>
     <script type="text/html" id="switchTpl">
         <input type="checkbox" name="is_real_user" value="@{{d.id}}" lay-skin="switch" lay-text="是|否"
@@ -507,6 +508,8 @@
                             }
                         })
                     });
+                }else if (layEvent === 'changepan') {
+                    layer_show('更改会员盘口', '/admin/user/changepan?id=' + data.id);
                 }
             });
         });
