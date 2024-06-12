@@ -94,6 +94,15 @@
             == 1 ? '已锁定' : '正　常' }}</a>
     </script>
 
+    <script type="text/html" id="switchPankou">
+        <span>
+            @{{ d.pan_type==1 ? 'A' : '' }}
+            @{{ d.pan_type==2 ? 'B' : '' }}
+            @{{ d.pan_type==3 ? 'C' : '' }}
+        </span>
+
+    </script>
+
     <script>
         layui.use(['element', 'form', 'layer', 'table'], function () {
             var element = layui.element
@@ -114,6 +123,7 @@
                     , {field: 'user_info', title: '帐号信息'}
                     , {field: 'time_info', title: '时间信息'}
                     , {field: 'yao_info', title: '邀请信息'}
+                    , {field: 'pan_type', title: '盘口', templet: "#switchPankou"}
                     , {field: 'is_real_user', title: '真实用户', width: 100, templet: "#switchTpl"}
                     , {field: 'withdraw', title: '提现', width: 100, templet: "#switchWithdrawTpl"}
                     , {field: 'invite_info', title: '推广信息'}

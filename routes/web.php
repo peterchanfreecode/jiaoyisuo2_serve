@@ -82,6 +82,9 @@ Route::group(['prefix' => 'api', 'middleware' => ['check_api', 'xss' /*'check_us
     Route::get('microtrade/lists', 'Api\MicroOrderController@lists')->middleware('validate_locked'); //下单记录
     Route::post('microtrade/get_mico_price', 'Api\MicroOrderController@get_mico_price')->middleware('validate_locked'); //http拉取时时价格
     Route::post('microtrade/get_mico_end', 'Api\MicroOrderController@get_mico_end')->middleware('validate_locked'); //http拉取订单
+    Route::get('microtrade/change_pankou', 'Api\MicroOrderController@changePankou'); //修改盘口
+    Route::get('microtrade/get_pankou', 'Api\MicroOrderController@getPanKou'); //获取盘口
+
 
     //资产
     Route::post('wallet/list', 'Api\WalletController@walletList');//用户账户资产信息

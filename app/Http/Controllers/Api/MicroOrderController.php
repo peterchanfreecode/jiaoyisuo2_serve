@@ -69,7 +69,8 @@ class MicroOrderController extends Controller
      */
     public function getSeconds()
     {
-        $panType = DB::table('settings')->where('key', 'pan_type')->value('value');;
+        $user_id = Users::getUserId();
+        $panType = DB::table('users')->where('id', $user_id)->value('pan_type');;
         $seconds = MicroSecond::where('status', 1)->where('type', $panType)->get();
         /*    $user_id = Users::getUserId();
             if ($seconds) {
@@ -351,5 +352,32 @@ class MicroOrderController extends Controller
           }*/
 
     }
+
+      /**
+     * 取到期时间
+     */
+    public function changePankou(Request $request)
+    {
+        $user_id = Users::getUserId();
+        $pan_type = $request->input('pan_type', "1");
+        if (!in_array($pan_type, [1, 2, 3])) {
+            return $this->error("参数错误");
+        }
+        DB::table('users')->where('id', $user_id)->update(['pan_type'=>$pan_type]);
+        return $this->success($pan_type);
+
+    }
+
+       /**
+     * 取到期时间
+     */
+    public function getPanKou(Request $request)
+    {
+        $user_id = Users::getUserId();
+        $pan_type = DB::table('users')->where('id', $user_id)->value('pan_type');
+        return $this->success($pan_type);
+
+    }
+
 
 }

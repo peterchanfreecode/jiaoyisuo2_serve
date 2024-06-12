@@ -25,7 +25,7 @@
                     <li hidden>工作室</li>
                     <li hidden>通证规则</li>
                     <li>秒合约</li>
-                    <li>修改盘口</li>
+                    <li style="display: none;">修改盘口</li>
                 </ul>
                 <div class="layui-tab-content">
                     <!--通知设置开始-->
@@ -787,7 +787,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="layui-tab-item">
+                    <div class="layui-tab-item" style="display: none;">
                         <div class="layui-form-item">
                             <label class="layui-form-label">盘口</label>
                             <div class="layui-input-block">
