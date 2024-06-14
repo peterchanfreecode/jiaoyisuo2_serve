@@ -7,3 +7,5 @@
 pong.
 /config/elasticsearch.php
 /app/Service/MailService.php
+sh/*.log
+*.log
