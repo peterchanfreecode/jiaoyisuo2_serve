@@ -49,6 +49,7 @@ class Kernel extends ConsoleKernel
         $schedule->command('daily_report')->everyFiveMinutes(); // 日报表
         $schedule->command('agent_report')->everyFiveMinutes(); // 代理报表
         $schedule->command('clear_gold')->everyMinute(); // 清理体验金
+        $schedule->command('micro_order')->everyMinute(); // 定时结算
 
     }
 
