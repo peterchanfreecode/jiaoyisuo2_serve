@@ -55,7 +55,8 @@ class MicroTradeLogic
             $currency = Currency::where('is_micro', 1)->find($currency_id);
             throw_unless($currency, new \Exception('币种不存在或不允许被交易'));
             //检测秒数是否在合法范围内
-            $seconds = MicroSecond::where('seconds', $seconds)->first();
+            $pan_type = \App\Service\UserService::getPan($user_id);
+            $seconds = MicroSecond::where('seconds', $seconds)->where('type', $pan_type)->first();
             throw_unless($seconds, new \Exception('到期时间不允许'));
             if ($number != intval($number)) {
                 throw new \Exception('下单数量必须是整数');
