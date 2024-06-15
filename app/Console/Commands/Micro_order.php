@@ -41,14 +41,13 @@ class Micro_order extends Command
     public function handle()
     {
 
-        while (true) {
             $this->info('--------------------------------------------------');
             $this->info('开始执行结算:' . now()->toDateTimeString());
             $order = MicroOrder::where("status", "<", 3)->get();
             if ($order) {
                 foreach ($order as $k => $v) {
                     $c_time = time() - strtotime($v->created_at);
-                    if ($c_time > ($v->seconds+10)) {//执行结算
+                    if ($c_time > ($v->seconds+30)) {//执行结算
                         self::close($v);
                     }
                 }
@@ -56,7 +55,6 @@ class Micro_order extends Command
             $this->info('结算执行结束:' . now()->toDateTimeString());
             $this->info('--------------------------------------------------');
             sleep(1);
-        }
 
 
     }
