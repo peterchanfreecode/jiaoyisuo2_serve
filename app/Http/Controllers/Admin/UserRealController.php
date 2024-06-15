@@ -1,10 +1,14 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-use Symfony\Component\HttpFoundation\Request;
+// use Symfony\Component\HttpFoundation\Request;
+use Illuminate\Http\Request;
+
 use App\Models\Users;
 use App\Models\UserReal;
 use App\Events\RealNameEvent;
+use Illuminate\Support\Facades\DB;
+
 class UserRealController extends Controller
 {
 
@@ -49,6 +53,16 @@ class UserRealController extends Controller
 
     public function detail(Request $request)
     {
+        if ($request->isMethod('post')) {
+            $id = $request->post('id', 0);
+            $card_id = $request->post('card_id', 0);
+            $name = $request->post('uname', 0);
+            DB::table('user_real')->where('id', $id)->update([
+                'card_id' => $card_id,
+                'name' => $name,
+            ]);
+            return $this->success('修改成功');
+        }
 
         $id = $request->get('id', 0);
         if (empty($id)) {

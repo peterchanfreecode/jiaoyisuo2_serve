@@ -249,6 +249,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['admin_auth']], function () 
     Route::get('user/real_index', 'Admin\UserRealController@index');
     Route::get('user/real_list', 'Admin\UserRealController@list');
     Route::get('user/real_info', 'Admin\UserRealController@detail');
+    Route::post('user/real_info', 'Admin\UserRealController@detail');
     Route::post('user/real_del', 'Admin\UserRealController@del');
     Route::post('user/real_auth', 'Admin\UserRealController@auth');
     Route::any('user/add_user', 'Admin\UserController@add_user');

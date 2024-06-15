@@ -15,13 +15,14 @@
         <div class="layui-form-item">
             <label class="layui-form-label">真实姓名</label>
             <div class="layui-input-block">
-                <input type="text" name="email" autocomplete="off" placeholder="" class="layui-input" value="{{$result->name}}" disabled>
+                <input type="text" name="uname" autocomplete="off" placeholder="" class="layui-input" value="{{$result->name}}">
             </div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">身份证号码</label>
             <div class="layui-input-block">
                 <input type="text" name="card_id" autocomplete="off" placeholder="" class="layui-input" value="{{$result->card_id}}">
+                <input type="hidden" name="id" autocomplete="off" placeholder="" class="layui-input" value="{{$result->id}}">
             </div>
         </div>
         <div class="layui-form-item layui-form-text">
@@ -40,7 +41,44 @@
 
             </div>
         </div>
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <button class="layui-btn" lay-submit="" lay-filter="demo1">修改</button>
+            </div>
+        </div>
     </form>
 
 @endsection
 
+
+@section('scripts')
+    <script>
+
+
+        layui.use(['form'],function () {
+            var form = layui.form
+                ,$ = layui.jquery
+                ,index = parent.layer.getFrameIndex(window.name);
+            //监听提交
+            form.on('submit(demo1)', function(data){
+                var data = data.field;
+                $.ajax({
+                    url:'{{url('admin/user/real_info')}}'
+                    ,type:'post'
+                    ,dataType:'json'
+                    ,data : data
+                    ,success:function(res){
+                        if(res.type=='error'){
+                            layer.msg(res.message);
+                        }else{
+                            parent.layer.close(index);
+                            parent.window.location.reload();
+                        }
+                    }
+                });
+                return false;
+            });
+        });
+    </script>
+
+@endsection
