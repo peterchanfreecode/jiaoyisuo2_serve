@@ -11,6 +11,7 @@ use App\Models\UserRealHigh;
 class MainController extends Controller{
 
     public function info(Request $request){
+
         $uid =  session()->get('admin_id');
         $arr_req = $arr_wallet = $arr_real = $arr_real2 = [];
         $req = ChargeReq::where("status",1)->orderBy('id','asc')->get();

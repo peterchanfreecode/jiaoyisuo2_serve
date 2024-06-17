@@ -1,30 +1,27 @@
 <?php
 
 namespace App\Jobs;
+
 use Illuminate\Bus\Queueable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
-use App\Service\MailService;
 use Illuminate\Support\Facades\Log;
 
-class SendEmail implements ShouldQueue
+
+class Testjob implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
-
-    protected $mail;
-
 
     /**
      * Create a new job instance.
      *
      * @return void
      */
-    public function __construct($mail)
+    public function __construct()
     {
-        $this->mail = $mail;
-
+        //
     }
 
     /**
@@ -34,7 +31,7 @@ class SendEmail implements ShouldQueue
      */
     public function handle()
     {
-        MailService::sendMail( $this->mail);
-        Log::info($this->mail . ' sended');
+        Log::info('test' . '---' . microtime());
+
     }
 }

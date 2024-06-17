@@ -595,7 +595,7 @@ class Users extends Model
                 $user_str .= '<span>是否代理: ' . $str . "</span>" . "<br>";
                 $user_str .= '<span>代理ID: ' . $v->agent_id . "</span>" . "<br>";
                 $user_str .= '<span>登录帐号: ' . $v->account_number . "</span>" . "<br>";
-                $info = time() - strtotime($v->last_active_time) < 1800 ? "<span style='color: red'>在线</span>" : "离线" . "</span>";
+                $info = time() - strtotime($v->last_active_time) < 20 ? "<span style='color: red'>在线</span>" : "离线" . "</span>";
                 $user_str .= '<span>在线状态: ' . $info . "</span>" . "<br>";
                 $user_str .= '<span>认证姓名: ' . $v->userreal_name . "</span>" . "<br>";
                 $user_str .= '<span>信用分: ' . $v->score . "</span>" . "<br>";

@@ -272,7 +272,9 @@ class UserController extends Controller
         $key = strtotime(date("Y-m-d",time()))."_".$mail;
         $num = Redis::get($key)??0;
         if($num<10){
-            SendEmail::dispatch($mail)->onQueue('email')->onConnection('redis');
+            // SendEmail::dispatch($mail)->onQueue('email')->onConnection('redis');
+            SendEmail::dispatch($mail);
+
             Redis::set($key,$num+1,"EX",86400);
             return $this->success('发送成功');
         }else{

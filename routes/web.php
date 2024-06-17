@@ -7,6 +7,7 @@ Route::group(['middleware' => ['lang','xss']], function () {
     Route::any('api/area_code', 'Api\CurrencyController@area_code');//国家区号
     Route::post('api/set/lang', 'Api\DefaultController@language');
     Route::any('api/app_setting', 'Api\DefaultController@app_setting');
+    Route::any('api/checklogin', 'Api\DefaultController@checklogin');
     Route::any('api/agent_kefu', 'Api\DefaultController@agent_kefu');
 
     Route::post('api/user/check_email', 'Api\LoginController@checkEmailCode');//验证邮件验证码

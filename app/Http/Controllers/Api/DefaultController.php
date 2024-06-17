@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use App\Models\AppSetting;
 use Illuminate\Support\Facades\Storage;
 use App\Models\AgentDomain;
+use App\Models\Users;
+
 class DefaultController extends Controller
 {
 
@@ -102,6 +104,16 @@ class DefaultController extends Controller
         }
         CurrencyService::set_Wallet($currency_id);
         return $this->success("执行成功");
+    }
+
+    public function checklogin()
+    {
+        $userid =  Users::getUserId();
+        if ($userid) {
+            Users::where('id', $userid)->update(['last_active_time' => date('Y-m-d H:i:s')]);
+        }
+        return $this->success($userid);
+       
     }
 }
 
