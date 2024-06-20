@@ -30,15 +30,15 @@ class SystemWalletController extends Controller
             $data['address'] = request()->input('address', '');
             $data['type'] = request()->input('type', '');
             $data['currency_id'] = request()->input('currency_id', 0);
-            $data['stepcode'] = request()->input('stepcode', 0);
+            // $data['stepcode'] = request()->input('stepcode', 0);
             foreach ($data as $v) if (!$v) return $this->error('请填写完整表单');
             $key = Redis::get("google_key");
-            if (!$key) {
-                return $this->error('安全码未设置');
-            }
-            if ($this->checkSecurityCode($data['stepcode'], $key) == false) {
-                return $this->error('验证安全码失败');
-            }
+            // if (!$key) {
+            //     return $this->error('安全码未设置');
+            // }
+            // if ($this->checkSecurityCode($data['stepcode'], $key) == false) {
+            //     return $this->error('验证安全码失败');
+            // }
             DB::beginTransaction();
             $arr = explode(",", $data['address']);
             try {
@@ -80,16 +80,16 @@ class SystemWalletController extends Controller
             $data['address'] = request()->input('address', '');
             $data['type'] = request()->input('type', '');
             $data['currency_id'] = request()->input('currency_id', 0);
-            $data['stepcode'] = request()->input('stepcode', 0);
+            // $data['stepcode'] = request()->input('stepcode', 0);
             foreach ($data as $v) if (!$v) return $this->error('请填写完整表单');
             $id = request()->input('id', 0);
             $key = Redis::get("google_key");
-            if (!$key) {
-                return $this->error('安全码未设置');
-            }
-            if ($this->checkSecurityCode($data['stepcode'], $key) == false) {
-                return $this->error('验证安全码失败');
-            }
+            // if (!$key) {
+            //     return $this->error('安全码未设置');
+            // }
+            // if ($this->checkSecurityCode($data['stepcode'], $key) == false) {
+            //     return $this->error('验证安全码失败');
+            // }
             $model = SystemWallet::find($id);
             if ($model->currency_id != $data['currency_id']) {
                 return $this->error('编辑不能更改币种');

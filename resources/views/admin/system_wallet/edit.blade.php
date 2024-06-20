@@ -35,13 +35,13 @@
                        class="layui-input" value="@if(!empty($result->address)){{$result->address}}@endif">
             </div>
         </div>
-        <div class="layui-form-item">
+        <!-- <div class="layui-form-item">
             <label class="layui-form-label">安全码</label>
             <div class="layui-input-inline">
                 <input type="text" name="stepcode" lay-verify="required" autocomplete="off" placeholder=""
                        class="layui-input" value="">
             </div>
-        </div>
+        </div> -->
 
         <input type="hidden" name="id" value="@if(!empty($result->id)){{$result->id}}@endif">
         <div class="layui-form-item">
