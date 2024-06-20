@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Models\News;
 use App\Models\NewsCategory;
+use Illuminate\Support\Facades\DB;
 
 class NewsController extends Controller
 {
@@ -17,6 +18,19 @@ class NewsController extends Controller
             return $this->error('参数错误');
         }
         $news = News::find($id);
+        return $this->success($news);
+    }
+
+    public function getNewsByCatName(Request $request)
+    {
+        $name = $request->get('name', '');
+        if (empty($name)) {
+            return $this->error('参数错误');
+        }
+        $lang = session()->get('lang');
+        $lang  = $lang ? $lang : 'en'; 
+        $c_id = DB::table('news_category')->where('name', $name)->value('id');
+        $news = News::where('c_id', $c_id)->where('lang', $lang)->first();
         return $this->success($news);
     }
 

@@ -16,6 +16,7 @@ Route::group(['middleware' => ['lang','xss']], function () {
     Route::post('api/user/login', 'Api\LoginController@login');//登录
     Route::post('api/news/list', 'Api\NewsController@getArticle');//获取文章列表
     Route::post('api/news/detail', 'Api\NewsController@get');//获取文章详情
+    Route::post('api/news/getNewsByCatName', 'Api\NewsController@getNewsByCatName');//通过分类名获取信息
     Route::any('api/currency/quotation_new', 'Api\CurrencyController@newQuotation'); //币种列表带行情(支持交易对)
     Route::any('api/currency/new_timeshar', 'Api\CurrencyController@klineMarket')->middleware(['cross']); //K线分时数据，对接tradeingview
     Route::any('api/upload', 'Api\DefaultController@upload');//上传图片接口
