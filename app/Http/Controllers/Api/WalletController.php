@@ -67,18 +67,20 @@ class WalletController extends Controller
             $res = [];
             $res2 = [];
             foreach ($currencyInfo as $v) {
-                if (strtolower($v["type"]) == "erc20") {
-                    $res[] = $v;
-                } else {
-                    $res2[] = $v;
-                }
+                // if (strtolower($v["type"]) == "erc20") {
+                //     $res[] = $v;
+                // } else {
+                //     $res2[] = $v;
+                // }
+
+                $arr[] = $v; 
             }
-            if ($res) {
-                $arr[] = $res[$user_i] ?? $res[0];
-            }
-            if ($res2) {
-                $arr[] = $res2[$user_i] ?? $res2[0];
-            }
+            // if ($res) {
+            //     $arr[] = $res[$user_i] ?? $res[0];
+            // }
+            // if ($res2) {
+            //     $arr[] = $res2[$user_i] ?? $res2[0];
+            // }
 
         } else {
             if ($currencyInfo) {
