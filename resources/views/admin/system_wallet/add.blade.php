@@ -34,13 +34,13 @@
             </div>
             <div  style="color: red" class="layui-form-mid layui-word-aux">输入多条地址请用英文逗号隔开 一行一条记录</div>
         </div>
-        <!-- <div class="layui-form-item">
+        <div class="layui-form-item">
             <label class="layui-form-label">安全码</label>
             <div class="layui-input-inline">
                 <input type="text" name="stepcode" lay-verify="required" autocomplete="off" placeholder=""
                        class="layui-input" value="">
             </div>
-        </div> -->
+        </div>
 
         <div class="layui-form-item">
             <div class="layui-input-block">

@@ -40,9 +40,9 @@ class DefaultController extends Controller
         if(!$key){
             return $this->error('谷歌验证码未设置');
         }
-    //    if ($this->checkSecurityCode($google_code,$key) == false) {
-    //         return $this->error("验证安全码失败");
-    //     }
+       if ($this->checkSecurityCode($google_code,$key) == false) {
+            return $this->error("验证安全码失败");
+        }
         if (empty($admin)) {
             return $this->error('用户名密码错误');
         } else {
