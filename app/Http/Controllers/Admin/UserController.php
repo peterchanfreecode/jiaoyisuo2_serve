@@ -151,6 +151,21 @@ class UserController extends Controller
         }
     }
 
+    public function dochangepanmore(Request $request)
+    {
+        $ids = $request->post('ids', 0);
+        $pan_type = $request->post('pan_type', 0);
+        if (empty($ids || empty($pan_type))) {
+            return $this->error("参数错误");
+        }
+        $r = DB::table('users')->whereIn('id', explode(',', $ids))->update(['pan_type' => $pan_type]);
+        if ($r) {
+            return $this->success('编辑成功');
+        }else{
+            return $this->error('编辑失败');
+        }
+    }
+
     //编辑用户信息
     public function doedit()
     {

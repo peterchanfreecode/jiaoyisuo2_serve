@@ -59,6 +59,14 @@
     </div>
 
     <table id="userlist" lay-filter="userlist"></table>
+
+    <script type="text/html" id="toolbarDemo">
+        <button class="layui-btn layui-btn-sm" lay-event="swa">设为A盘</button>
+        <button class="layui-btn layui-btn-sm" lay-event="swb">设为B盘</button>
+        <button class="layui-btn layui-btn-sm" lay-event="swc">设为C盘</button>
+    </script>
+
+
 @endsection
 
 @section('scripts')
@@ -114,6 +122,7 @@
             var user_table = table.render({
                 elem: '#userlist'
                 , toolbar: true
+                ,toolbar: '#toolbarDemo'
                 , url: '/admin/user/list'
                 , page: true
                 , limit: 100
@@ -137,6 +146,49 @@
             $('input[name=account]').keypress(function (event) {
                 if (event.charCode == 13) {
                     $('#mobile_search').click();
+                }
+            });
+
+            // 工具栏事件
+            table.on('toolbar(userlist)', function(obj){
+                var id = obj.config.id;
+                var checkStatus = table.checkStatus(id);
+                var data = checkStatus.data;
+                var param = [];
+                var ids  = '';
+                var pan_type = 1
+                switch(obj.event){
+                    case 'swa':
+                        pan_type = 1
+                        break;
+                    
+                    case 'swb':
+                        pan_type = 2
+                        break;
+
+                    case 'swc':
+                        pan_type = 3
+                        break;
+        
+                };
+                if(data.length > 0) {
+                    data.forEach((item, index)=>{
+                        param.push(item.id)
+                    })
+                    ids = param.join(',');
+
+                    $.ajax({
+                        url: '/admin/user/dochangepanmore',
+                        type: 'post',
+                        dataType: 'json',
+                        data: {ids: ids, pan_type: pan_type},
+                        success: function (res) {
+                            layer.msg(res.message);
+                            setTimeout(() => {
+                                user_table.reload();
+                            }, 1000);
+                        }
+                    });
                 }
             });
 
