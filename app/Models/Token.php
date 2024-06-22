@@ -22,7 +22,7 @@ class Token extends Model
     public function __construct(array $attributes = [])
     {
         parent::__construct($attributes);
-        $this->where('time_out', '<', time())->delete();
+        // $this->where('time_out', '<', time())->delete();
     }
 
     //获取token值
