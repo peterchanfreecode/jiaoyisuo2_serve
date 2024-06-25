@@ -12,10 +12,17 @@
             <label class="layui-form-label">预设盈利状态</label>
             <div class="layui-input-block">
                 <select name="risk" lay-verify="required" lay-filter="risk_mode">
-                    <option value=""></option>
+                    <!-- <option value=""></option>
                     <option value="0" {{ ($result->pre_profit_result ?? 0) == 0 ? 'selected' : '' }} >无</option>
                     <option value="1" {{ ($result->pre_profit_result ?? 0) == 1 ? 'selected' : '' }} >盈利</option>
-                    <option value="-1" {{ ($result->pre_profit_result ?? 0) == -1 ? 'selected' : '' }} >亏损</option>
+                    <option value="-1" {{ ($result->pre_profit_result ?? 0) == -1 ? 'selected' : '' }} >亏损</option> -->
+
+                    <option value="0" {{ $result->pre_profit_result  == 0 ? 'selected' : '' }} >无</option>
+                    <option value="1" {{ $result->pre_profit_result  == 1 ? 'selected' : '' }} >盈利</option>
+                    <option value="-1" {{ $result->pre_profit_result  == -1 ? 'selected' : '' }} >亏损</option>
+                    <option value="2" {{ $result->pre_profit_result  == 2 ? 'selected' : '' }} >涨赢</option>
+                    <option value="3" {{ $result->pre_profit_result  == 3 ? 'selected' : '' }} >跌赢</option>
+
                 </select>
             </div>
         </div>
@@ -24,7 +31,7 @@
         <div class="layui-form-item">
             <div class="layui-input-block">
                 <button class="layui-btn" lay-submit="" lay-filter="demo1">立即提交</button>
-                <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                <!-- <button type="reset" class="layui-btn layui-btn-primary">重置</button> -->
             </div>
         </div>
     </form>

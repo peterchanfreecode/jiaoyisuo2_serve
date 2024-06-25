@@ -93,7 +93,7 @@ class MicroTradeLogic
                 'lose_ratio' => $user_mico_info->lose_ratio ?? $seconds->lose_ratio,
                 'fee' => $fee,
                 'status' => MicroOrder::STATUS_OPENED,
-                'pre_profit_result' => 0, //预设赢利
+                'pre_profit_result' => $user['risk'], //预设赢利
                 'handled_at' => $now->addSeconds($seconds->seconds),
                 'is_insurance' => 0,
                 'agent_path' => $user->agent_path,

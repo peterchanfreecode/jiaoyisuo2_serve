@@ -295,7 +295,7 @@
                     ,{field: 'updated_at', title: '更新日期', width: 170, sort: true, hide: true}
                     ,{field: 'handled_at', title: '平仓时间', width: 170, sort: true, hide: true}
                     ,{field: 'complete_at', title: '完成时间', width: 170, sort: true, hide: true}
-                    //,{fixed: 'right', title: '操作', width: 100, align: 'center', toolbar: '#barDemo'}
+                    ,{fixed: 'right', title: '操作', width: 100, align: 'center', toolbar: '#barDemo'}
                 ]]
             });
 

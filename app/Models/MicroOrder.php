@@ -113,18 +113,18 @@ class MicroOrder extends Model
         return $user->value('account_number') ?? "--";
     }
 
-    public function setPreProfitResultAttribute($value)
-    {
-        if (!$this->exists) {
-            $user_id = $this->attributes['user_id']; //下单用户id
-            $currency_id = $this->attributes['currency_id']; //币种id
-            $number = $this->attributes['number']; //下单数量
-            $result = self::getRisk($user_id, $currency_id, $number);
-            $this->attributes['pre_profit_result'] = $result;
-        } else {
-            $this->attributes['pre_profit_result'] = $value;
-        }
-    }
+    // public function setPreProfitResultAttribute($value)
+    // {
+    //     if (!$this->exists) {
+    //         $user_id = $this->attributes['user_id']; //下单用户id
+    //         $currency_id = $this->attributes['currency_id']; //币种id
+    //         $number = $this->attributes['number']; //下单数量
+    //         $result = self::getRisk($user_id, $currency_id, $number);
+    //         $this->attributes['pre_profit_result'] = $result;
+    //     } else {
+    //         $this->attributes['pre_profit_result'] = $value;
+    //     }
+    // }
 
     /**
      * 返回风控结果
