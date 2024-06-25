@@ -24,7 +24,13 @@ class CurrencyController extends Controller
         if($currency[0]["quotation"]){
             $arr = [];
             foreach($currency[0]["quotation"] as $k=>$v){
-                if( $v->open_microtrade ==0){
+                // if( $v->open_microtrade ==0){
+                //     unset($currency[0]["quotation"][$k]);
+                // }else{
+                //     $arr[] = $v;
+                // }
+
+                if( ( $v->open_microtrade == 0 ) || ( $v->is_display==0 ) ){
                     unset($currency[0]["quotation"][$k]);
                 }else{
                     $arr[] = $v;
