@@ -110,6 +110,15 @@ class CurrencyController extends Controller
             if(!$id){
                 CurrencyService::set_Wallet($currency->id);
             }
+
+
+            //同步手续费
+            if ($is_match) {
+                $cmt = CurrencyMatch::where('currency_id', $id)->first();
+                $cmt->lever_trade_fee = $micro_trade_fee;
+                $cmt->save();
+            }
+
             DB::commit();
             return $this->success('操作成功');
         } catch (\Exception $exception) {

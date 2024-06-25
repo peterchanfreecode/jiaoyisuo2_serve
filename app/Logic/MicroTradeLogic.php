@@ -73,7 +73,7 @@ class MicroTradeLogic
             //扣手续费
             $fee = bc_div(bc_mul($number, $currency_match->lever_trade_fee), 100);
             if ($fee > 0) {
-                $result = change_wallet_balance($wallet, $balance_type, -$fee, AccountLog::MICRO_TRADE_FREE, '秒合约下单扣除' . $currency->micro_trade_fee . '%手续费');
+                $result = change_wallet_balance($wallet, $balance_type, -$fee, AccountLog::MICRO_TRADE_FREE, '秒合约下单扣除' . $currency_match->lever_trade_fee . '%手续费');
             }
             throw_unless($result === true, new \Exception($result));
             $now = Carbon::now();
