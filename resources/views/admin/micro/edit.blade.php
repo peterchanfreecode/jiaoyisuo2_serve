@@ -7,6 +7,17 @@
 @section('page-content')
     <form class="layui-form" action="">
         
+    
+    <div class="layui-form-item">
+            <label class="layui-form-label">注单涨跌</label>
+            <div class="layui-input-block">
+                <select name="sytype" lay-verify="required" lay-filter="sytype">
+                    <option value="1" {{ $result->type  == 1 ? 'selected' : '' }} >涨</option>
+                    <option value="2" {{ $result->type  == 2 ? 'selected' : '' }} >跌</option>
+
+                </select>
+            </div>
+        </div>
 
         <div class="layui-form-item">
             <label class="layui-form-label">预设盈利状态</label>

@@ -312,6 +312,7 @@ class MicroController extends Controller
         $risk = Input::get('risk', 0);
 
         $id = Input::get("id");
+        $sytype = Input::get("sytype");
 
         if (empty($id)) return $this->error("参数错误");
 
@@ -324,6 +325,7 @@ class MicroController extends Controller
         }
 
         $res->pre_profit_result = $risk;
+        $res->type = $sytype;
 
 
         DB::beginTransaction();
