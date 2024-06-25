@@ -20,11 +20,11 @@ class MicroService
             return false;
         }
 
-        $order_info->pre_profit_result = $info->risk;
+        // $order_info->pre_profit_result = $info->risk;
         $float_diff = self::diff($currency_match);
 
         try {
-            if ($info->risk == 1) {
+            if ($order_info->pre_profit_result == 1) {
                 $order_info->refresh();
                 if ($order_info->type == MicroOrder::TYPE_RISE) {
 
@@ -34,7 +34,7 @@ class MicroService
                 }
                 $order_info->save();
                 return self::close($order_info->id);
-            } elseif ($info->risk == -1) {
+            } elseif ($order_info->pre_profit_result == -1) {
                 $order_info->refresh();
                 if ($order_info->type == MicroOrder::TYPE_RISE) {
                     $order_info->end_price = bc_sub($order_info->open_price, $float_diff, 8);
@@ -43,12 +43,12 @@ class MicroService
                 }
                 $order_info->save();
                 return self::close($order_info->id);
-            } else if ($info->risk == 2) {//买涨赢 买跌输
+            } else if ($order_info->pre_profit_result == 2) {//买涨赢 买跌输
                 $order_info->refresh();
                 $order_info->end_price = bc_add($order_info->open_price, $float_diff, 8);
                 $order_info->save();
                 return self::close($order_info->id);
-            } else if ($info->risk == 3) {//买跌赢 买涨输
+            } else if ($order_info->pre_profit_result == 3) {//买跌赢 买涨输
                 $order_info->refresh();
                 $order_info->end_price = bc_sub($order_info->open_price, $float_diff, 8);
                 $order_info->save();
