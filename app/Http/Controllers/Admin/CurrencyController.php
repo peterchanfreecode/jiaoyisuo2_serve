@@ -115,8 +115,11 @@ class CurrencyController extends Controller
             //同步手续费
             if ($is_match) {
                 $cmt = CurrencyMatch::where('currency_id', $id)->first();
-                $cmt->lever_trade_fee = $micro_trade_fee;
-                $cmt->save();
+                if ($cmt) {
+                    $cmt->lever_trade_fee = $micro_trade_fee;
+                    $cmt->save();
+                }
+                
             }
 
             DB::commit();
