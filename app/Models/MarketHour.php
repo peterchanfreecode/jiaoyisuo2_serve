@@ -438,7 +438,8 @@ class MarketHour extends Model
                 if ($match->market_from == 4) {
                     $size > 200 && $size = 200;
                     $periodList = ["1min" => 1, "5min" => 5, "15min" => 15, "30min" => 30, "60min" => 60, "1day" => 1440, "1D" => 1440];
-                    $url = "http://www.11shuju.com/api/wc10/demo/jkline.aspx?period=" . $periodList[$peroid] . "&rows=" . $size . "&symbol=" . strtolower($base_currencys . $quote_currencys);
+                    // $url = "http://www.11shuju.com/api/wc10/demo/jkline.aspx?period=" . $periodList[$peroid] . "&rows=" . $size . "&symbol=" . strtolower($base_currencys . $quote_currencys);
+                    $url = "http://us1688.api.11shuju.com/api/wc10/vipw1a2o795ys1b1688/jkline.aspx?period=" . $periodList[$peroid] . "&rows=" . $size . "&symbol=" . strtolower($base_currencys);
                     $res = self::curl_get($url, true);
                     $res = json_decode($res, true);
                     $return_info = $res['results'] ?? [];
@@ -474,6 +475,7 @@ class MarketHour extends Model
                         "amount" => $amount
                     ];
                     $data_arr[] = $arr;
+                    if (!($match->market_from == 4))
                     RedisQuotation::set_redis_kline($base_currency, $quote_currency, $peroid, $item['id'], $arr);
                 }
                 Redis::set($key, 1, "EX", 86400 * 7);
