@@ -478,6 +478,7 @@ class MarketHour extends Model
                     if (!($match->market_from == 4))
                     RedisQuotation::set_redis_kline($base_currency, $quote_currency, $peroid, $item['id'], $arr);
                 }
+                if (!($match->market_from == 4))
                 Redis::set($key, 1, "EX", 86400 * 7);
                 $res = array_reverse($data_arr);
             } else {
