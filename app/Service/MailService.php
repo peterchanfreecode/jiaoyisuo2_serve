@@ -10,10 +10,10 @@ use PHPMailer\PHPMailer\SMTP;
 class MailService
 {
 
-    // const KEY = 'btse@btsesml.com';
+    // const KEY = 'LBANK@LBANKsml.com';
     // const PASSWORD = 'nezlxzvdtuvqkmqg';
-    // const SENDER_EMAIL = 'btse@btsesml.com';
-    // const SENDER_NAME = 'BTSE';
+    // const SENDER_EMAIL = 'LBANK@LBANKsml.com';
+    // const SENDER_NAME = 'LBANK';
     // const SMTP_HOST = 'smtp.gmail.com';
     // const SMTP_PORT = '465';
 
@@ -24,12 +24,12 @@ class MailService
     // const SMTP_HOST = 'smtp.lbank18.com';
     // const SMTP_PORT = '587';
 
-    const KEY = 'info@lbank18.com';
-    const PASSWORD = '2YIFxldqvmsb';
-    const SENDER_EMAIL = 'info@lbank18.com';
+    const KEY = 'system@lbank18.com';
+    const PASSWORD = 'gzohdfesehhsjeds';
+    const SENDER_EMAIL = 'system@lbank18.com';
     const SENDER_NAME = 'LBANK';
-    const SMTP_HOST = 'smtp.lbank18.com';
-    const SMTP_PORT = '25';
+    const SMTP_HOST = 'smtp.gmail.com';
+    const SMTP_PORT = '465';
 
     public static function sendMail($toMail)
     {
@@ -101,7 +101,7 @@ class MailService
             >
               <h2 style="color: #fff">Account Activation</h2>
               <div class="m_-5807654868968254169mt-2" style="color:#93a1c2">
-                Dear users, welcome to BTSE,Your verification code is:
+                Dear users, welcome to LBANK,Your verification code is:
               </div>
               <div class="code">' . $str . '</div>
               <div class="m_-5807654868968254169mt-4" style="color:#93a1c2">
@@ -113,10 +113,10 @@ class MailService
                   </li>
                   <li>
                     Don\'t call any customer service person who claims to be
-                    BTSE.
+                    LBANK.
                   </li>
                 </ol>
-                <h4>BTSE Team</h4>
+                <h4>LBANK Team</h4>
                 <p>System mail,please do not reply.</p>
                 <div class="yj6qo"></div>
                 <div class="adL"></div>
@@ -141,7 +141,7 @@ class MailService
                 帐号激活
               </div>
               <div class="m_4414228920273776432mt-2" style="color:#93a1c2">
-                尊敬的用户,欢迎来到BTSE.您的验证码是:
+                尊敬的用户,欢迎来到LBANK.您的验证码是:
               </div>
               <div
                 class="m_4414228920273776432dark-box m_4414228920273776432mt-2 m_4414228920273776432font-bold m_4414228920273776432text-blue m_4414228920273776432text-center"
@@ -152,9 +152,9 @@ class MailService
                 <h4>安全提示:</h4>
                 <ol>
                   <li>不要告诉任何人你的密码和二次验证码.</li>
-                  <li>不要打电话给任何自称是BTSE的客服.</li>
+                  <li>不要打电话给任何自称是LBANK的客服.</li>
                 </ol>
-                <h4>BTSE 团队</h4>
+                <h4>LBANK 团队</h4>
                 <p>系统邮件,请勿回复.</p>
               </div>
             </div>
